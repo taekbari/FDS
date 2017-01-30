@@ -1,0 +1,382 @@
+@charset "UTF-8";
+@import "https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css";
+
+/*
+ * Global 영역.
+ */
+html{
+  font-size: 10px;
+}
+body{
+  font-family: 'Poppins', sans-serif;
+}
+a{
+	text-decoration: none;
+  color: rgba(51, 51, 51, 0.9);
+}
+/*
+ * float clearfix.
+ * float 영역 처리하기 위한 클래스.
+ */
+.clearfix::after{
+	display: block;
+  content: '';
+  clear: both;
+}
+.hidden{
+  position: absolute;
+  left: -9999em;
+}
+/*
+ * section 에서 사용하는 공통 속성들.
+ * 제목 & 내용.
+ */
+.section-title, .section-sub-title{
+	margin: 0;
+	font-size: 3.5rem;
+	font-weight: 600;
+	text-align: center;
+	color: #333333;
+}
+.section-content, .section-sub-content{
+	font-size: 1.4rem;
+	line-height: 1.5em;
+	color: rgba(51, 51, 51, 0.6);
+	text-align: center;
+}
+.section-sub-title{
+ font-size: 1.4rem;
+ text-transform: uppercase;
+ letter-spacing: 2px;
+ color: #03a67b;
+}
+.section-sub-content{
+ font-size: 1.2rem;
+}
+
+/*
+ * header 영역.
+ * ---------------------------------
+ * logo                    div   nav
+ * ---------------------------------
+ * 크게 위와 같이 구성.
+ * float 사용해서 레이아웃 정렬.
+ *
+ * 네비게이션 hover일 때의 애니메이션 추가해야함.
+ */
+.header{
+  width: 1140px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 20px 0;
+  vertical-align: middle;
+}
+.logo{
+  float: left;
+  margin: 0;
+  line-height: 30px;
+}
+/* 이미지와 텍스트 링크 세로 중앙 정렬을 위해 사용 */
+.logo img, .company-nav-heading img, .english, .germany{
+  vertical-align: middle;
+}
+.company-nav{
+  position: relative;
+  float: right;
+}
+.company-nav-heading{
+  margin: 0;
+  line-height: 30px;
+}
+.company-nav-list{
+  position: absolute;
+  height: 0;
+  top: 20px;
+  right: 0;
+  padding: 0;
+  list-style: none;
+  background: #03a67b;
+  overflow: hidden;
+  transition: all 1s;
+}
+.company-nav-list li{
+  display: none;
+}
+.company-nav-list.act{
+  height: 134px;
+}
+.company-nav-list.act li{
+  display: block;
+}
+.company-nav-list a{
+  display: block;
+  width: 150px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  font-size: 1.2rem;
+  color: #fff;
+}
+.company-nav-list a:hover,
+.company-nav-list a:focus{
+  color: #03a67b;
+  background: #fff;
+  border: 1px solid #03a67b;
+}
+.language{
+  float: right;
+  margin-right: 10px;
+  font-size: 1.2rem;
+  line-height: 30px;
+}
+.english, .germany{
+  display: inline-block;
+  padding: 0 5px;
+}
+.language span{
+  color: rgba(51, 51, 51, 0.9);
+}
+.english:hover, .english:focus,
+.germany:hover, .germany:focus{
+  font-weight: 600;
+  color: #03a67b;
+}
+/*
+ * introduce section 영역.
+ */
+.introduce{
+  width: 1140px;
+  padding: 100px 0 360px 0;
+  margin: 0 auto;
+  background: #fff url(../images/image-browser.png) no-repeat 150px 330px;
+}
+.introduce .section-title{
+  font-size: 4.5rem;
+}
+.introduce .section-content{
+  width: 700px;
+  margin: 20px auto;
+}
+.icon-btn{
+  /* 가운데 정렬을 위해서 속성 변경. */
+  display: block;
+  width: 180px;
+  height: 40px;
+  padding: 10px 0;
+  border: 1px solid #03a67b;
+ 	border-radius: 2px;
+  margin: 0 auto;
+	background: #fff;
+ 	font-size: 1.2rem;
+ 	font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+	color: #03a67b;
+}
+.icon-btn::before{
+  /* 높이가 살짝 어긋나는 부분을 위한 위치 조정. */
+  content: url(../images/icon-play.png);
+  position: relative;
+  top: 1px;
+  margin-right: 10px;
+}
+.icon-btn:hover{
+  cursor: pointer;
+}
+/*
+ * intro video section 영역.
+ * ---------------------------------
+ *            재생 버튼
+ *              소개
+ * ---------------------------------
+ */
+.intro-video{
+  background: #03a67b;
+}
+.video{
+  width: 1140px;
+  padding: 130px 0;
+  margin: 0 auto;
+}
+.intro-video-btn{
+  /* 가운데 정렬을 위해서 속성 변경. */
+  display: block;
+  width: 104px;
+  height: 104px;
+  padding: 0;
+  border: 0;
+  margin: 0 auto;
+  background: url(../images/image-play-white-button.png) no-repeat;
+  text-indent: 104px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.intro-video-btn:hover{
+  cursor: pointer;
+}
+.intro-video .section-content{
+  width: 500px;
+  margin: 40px auto 0 auto;
+  color: #fff
+}
+/*
+ * features 영역.
+ * ---------------------------------
+ *              제목
+ *              내용
+ *    section1       section3
+ *    section2       section4
+ * ---------------------------------
+ */
+.features{
+  width: 1140px;
+  height: 700px;
+  padding: 80px 0;
+  margin: 0 auto;
+  background: #fff url(../images/image-iphone.png) no-repeat 50% 70%;
+}
+.features .section-content{
+  width: 600px;
+  margin: 20px auto 0 auto;
+}
+.first-line, .second-line{
+  float: left;
+  width: 50%;
+  box-sizing: border-box;
+  padding: 0 100px;
+  margin-top: 200px;
+}
+.first-line section, .second-line section{
+  width: 250px;
+  height: 130px;
+  margin: 10px auto;
+}
+/*
+ * gallery 영역.
+ * ---------------------------------
+ *              제목
+ *  figure1  figure2 figure3 figure4
+ *  pre-button           next-button
+ * ---------------------------------
+ * 이 영역에서는 figure는 flex 사용하여 가로 배열.
+ * 이전 다음 버튼은 position 사용해 위치.
+ */
+.gallery{
+  background: #fcfcfc;
+}
+.gallery-content{
+  position: relative;
+  width: 1140px;
+  padding: 100px 0;
+  margin: 0 auto;
+}
+.flex-layout{
+  display: flex;
+  justify-content: space-around;
+  width: 1140px;
+  margin: 50px auto 0 auto;
+}
+.flex-layout figure{
+  width: 250px;
+  height: 250px;
+  border-radius: 4px;
+  margin: 0;
+  line-height: 250px;
+  text-align: center;
+  background: #e8e8e8;
+}
+.flex-layout img{
+  vertical-align: middle;
+}
+.prev-btn, .next-btn{
+  position: absolute;
+  top: 275px;
+  width: 78px;
+  height: 78px;
+  padding: 0;
+  border: 1px solid #e2e2e2;
+  border-radius: 39px;
+  background: #fff;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  /* ir 기법 사용하여 버튼 텍스트 제거. */
+  text-indent: 78px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.prev-btn{
+  left: -110px;
+  background-image: url(../images/icon-prev.png);
+}
+.next-btn{
+  right: -110px;
+  background-image: url(../images/icon-next.png);
+}
+/*
+ * store map 영역.
+ * ---------------------------------
+ *              제목
+ *           map & area
+ * ---------------------------------
+ */
+.find-store{
+  width: 1140px;
+  padding: 100px 0;
+  margin: 0 auto;
+}
+.store-map{
+  position: relative;
+  margin-top: 50px;
+  text-align: center;
+}
+.store-content{
+  position: absolute;
+  top: 210px;
+  left: 230px;
+  padding: 15px;
+  background: #fff;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.04);
+}
+.store-content strong{
+  color: #03a67b;
+}
+/*
+ * footer 영역.
+ * ---------------------------------
+ * 로고                  사이트 이용 메뉴
+ * 사이트 설명             사이트 공유 메뉴
+ * ---------------------------------
+ */
+.footer{
+  width: 1140px;
+  padding: 50px 0;
+  margin: 0 auto;
+}
+.footer-logo{
+  float: left;
+  width: 300px;
+  font-size: 1.4rem;
+ 	line-height: 1.5em;
+ 	color: rgba(51, 51, 51, 0.6);
+}
+.footer-logo p{
+  margin: 5px 0;
+}
+.footer-menu{
+  float: right;
+}
+.site-use-section ul, .site-share-section ul{
+  list-style: none;
+  text-align: right;
+  padding: 0;
+}
+.site-use-section li, .site-share-section li{
+  display: inline-block;
+}
+.site-use-section a, .site-share-section a{
+  font-size: 1.4rem;
+  padding: 0 10px;
+}
+.site-use-section a:hover, .site-use-section a:focus,
+.site-share-section a:hover, .site-share-section a:focus{
+  border-bottom: 1px solid rgba(51, 51, 51, 0.9);
+}

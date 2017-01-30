@@ -1,0 +1,455 @@
+@charset "UTF-8";
+@import "https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css";
+
+/*
+ * Global 영역.
+ */
+html{
+  font-size: 10px;
+}
+body{
+  font-family: 'Poppins', sans-serif;
+}
+a{
+  text-decoration: none;
+  color: rgba(51, 51, 51, 0.9);
+}
+/*
+ * float clearfix.
+ * float 영역 처리하기 위한 클래스.
+ */
+.clearfix::after{
+  display: block;
+  content: '';
+  clear: both;
+}
+/*
+ * section 에서 사용하는 공통 속성들.
+ * 제목 & 내용.
+ */
+.section-title, .section-sub-title{
+  margin: 0;
+  font-weight: 600;
+  color: #333333;
+  text-align: center;
+}
+.section-title{
+	font-size: 3.5rem;
+}
+.section-sub-title{
+ font-size: 1.4rem;
+ text-transform: uppercase;
+ letter-spacing: 2px;
+}
+.section-content, .section-sub-content{
+	color: rgba(51, 51, 51, 0.6);
+	text-align: center;
+  line-height: 1.5;
+}
+.section-content{
+  font-size: 1.4rem;
+}
+.section-sub-content{
+ font-size: 1.2rem;
+}
+/*
+ * 기본 button 스타일.
+ */
+.btn-default{
+  width: 180px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 2px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  background: #03a67b;
+  color: #fff;
+}
+/*
+ * header 영역.
+ * ---------------------------------
+ * 로고                       메뉴 링크
+ * ---------------------------------
+ * 로고, 메뉴 배치는 float 사용.
+ * 회사 메뉴는 메뉴 링크의 상태 변화에 따라 나타나도록 추가해보자.
+ */
+header{
+  background: #03a67b;
+  padding: 50px 0 10px 0;
+}
+.header{
+  width: 1140px;
+  margin: 0 auto;
+}
+.logo{
+  float: left;
+}
+.company-nav{
+  position: relative;
+  float: right;
+}
+.company-nav-btn{
+  text-align: right;
+}
+.company-nav-btn img{
+  vertical-align: middle;
+}
+.company-nav-list{
+  position: absolute;
+  top: 30px;
+  right: -300px;
+  width: 300px;
+  list-style: none;
+  padding: 0;
+  opacity: 0;
+  z-index: -1;
+  transition: all 1s;
+}
+.company-nav-list.act{
+  right: 0;
+  opacity: 1;
+  z-index: 10;
+}
+.company-nav-list.act li{
+  display: block;
+}
+.company-nav-list li{
+  float: left;
+  display: none;
+}
+.company-nav-list a{
+  display: block;
+  font-size: 1.4rem;
+  padding: 5px 10px;
+  color: #fff;
+}
+.company-nav-list a:hover,
+.company-nav-list a:focus{
+  border-bottom: 1px solid #fff;
+}
+/*
+ * introduce section 영역.
+ * ---------------------------------
+ *              제목
+ *              내용
+ *              버튼
+ *   섹션1       섹션2      섹션3
+ * ---------------------------------
+ * 섹션 배치는 float 사용.
+ * 마크업 상으로는 버튼이 마지막에 있기 때문에 position 사용.
+ */
+.introduce-section{
+  background: #03a67b;
+}
+.introduce{
+  position: relative;
+  width: 1140px;
+  padding: 100px 0 50px 0;
+  margin: 0 auto;
+}
+.introduce::after{
+  display: block;
+  content: '';
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+.introduce .section-title,
+.introduce .section-sub-title{
+  color: #fff
+}
+.introduce .section-content,
+.introduce .section-sub-content{
+  color: rgba(255, 255, 255, 0.7);
+}
+.introduce .section-sub-title,
+.introduce .section-sub-content{
+  text-align: left;
+}
+.introduce .section-content{
+  width: 690px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.introduce section{
+  float: left;
+  width: 29%;
+  margin: 150px 6.5% 30px 0;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+.introduce section:last-of-type{
+  margin-right: 0;
+}
+.intro-btn{
+  position: absolute;
+  top: 250px;
+  left: 480px;
+  background: #fff;
+  color: #03a67b;
+}
+.intro-btn:hover,
+.intro-btn:focus{
+  cursor: pointer;
+}
+/*
+ * product section 영역.
+ * ---------------------------------
+ *              제목
+ * 링크    figure1    figure2     링크
+ *      figcaption  figcaption
+ * ---------------------------------
+ * figure는 li요소를 사용하여 마크업.
+ * figure 배치는 float 사용.
+ * 마크업 상으로는 링크가 마지막에 있기 때문에 position 사용.
+ */
+.product-section{
+  position: relative;
+  width: 1140px;
+  padding: 100px 0;
+  margin: 0 auto;
+}
+.product-list{
+  list-style: none;
+  padding: 0;
+  margin-top: 50px;
+}
+.product-list li{
+  float: left;
+  width: 49%;
+  margin-right: 2%;
+}
+.product-list li:last-of-type{
+  margin-right: 0;
+}
+.product-list figure{
+  position: relative;
+  margin: 0;
+}
+.product-list dt, .product-list dd{
+  margin: 0;
+}
+.product-list dt{
+  font-size: 2.2rem;
+  padding-top: 20px;
+}
+.product-list dd:first-of-type{
+  position: relative;
+  top: -43px;
+  left: 0;
+  color: #03a67b;
+}
+.product-list dd:last-of-type{
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  font-size: 2.0rem;
+  color: rgba(51, 51, 51, 0.7);
+}
+.product-list-info{
+  margin-top: 20px;
+  text-align: center;
+}
+.product-list-info a{
+  padding: 0 3px;
+}
+.product-list-info img{
+  vertical-align: middle;
+}
+.prev-list-link, .next-list-link{
+  position: absolute;
+  top: 395px;
+}
+.prev-list-link{
+  left: -70px;
+}
+.next-list-link{
+  right: -70px;
+}
+/*
+ * service section 영역.
+ * ---------------------------------
+ *              제목
+ *              내용
+ *   이미지      이미지       이미지
+ *    제목       제목        제목
+ *    내용       내용        내용
+ * ---------------------------------
+ * section 배치는 float 사용.
+ * 마크업 상으로는 이미지가 마지막에 있기 때문에 position 사용.
+ */
+.service-section{
+  background: #fcfcfc;
+}
+.service{
+  width: 1140px;
+  padding: 100px 0;
+  margin: 0 auto;
+}
+.service .section-content{
+  width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.service section{
+  position: relative;
+  float: left;
+  width: 30%;
+  padding-top: 250px;
+  margin-top: 50px;
+  margin-right: 5%;
+}
+.service section:last-of-type{
+  margin-right: 0;
+}
+.service .section-sub-content{
+  width: 250px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.service section img{
+  position: absolute;
+  top: 0;
+  left: 3px;
+}
+/*
+ * blog section 영역.
+ * ---------------------------------
+ *              제목
+ *      이미지            이미지
+ *      제목              제목
+ *      내용              내용
+ * ---------------------------------
+ * figure 배치는 float 사용.
+ * 마크업 상으로는 category가 마지막에 있으므로 position 사용.
+ */
+.blog-section{
+  width: 1140px;
+  margin: 0 auto;
+  padding: 100px 0;
+}
+.blog-list{
+  list-style: none;
+  padding: 0;
+  margin: 50px 0 0;
+}
+.blog-list li{
+  float: left;
+  width: 49%;
+  margin: 10px 2% 10px 0;
+}
+.blog-list li:nth-of-type(even){
+  margin-right: 0;
+}
+.blog-list figure{
+  margin: 0;
+}
+.blog-list figcaption{
+  position: relative;
+}
+.blog-list dt, .blog-list dd{
+  margin: 0;
+  text-align: left;
+}
+.blog-list dt{
+  font-size: 2.2rem;
+  padding-top: 30px;
+}
+.blog-list dd{
+  width: 400px;
+  margin: 5px 0;
+}
+.blog-list dd:last-of-type{
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #03a67b;
+}
+.blog-btn{
+  display: block;
+  margin: 20px auto 0;
+}
+.blog-btn:hover,
+.blog-btn:focus{
+  border: 1px solid #03a67b;
+  color: #03a67b;
+  background: #fff;
+  cursor: pointer;
+}
+/*
+ * map section 영역.
+ * ---------------------------------
+ *              제목
+ *              내용
+ *      input   input  button
+ *              지도
+ * ---------------------------------
+ */
+.map{
+  width: 1140px;
+  padding-top: 100px;
+  margin: 0 auto;
+}
+.map .section-content{
+  width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.search{
+  margin: 30px 0 60px 0;
+  text-align: center;
+}
+.search input{
+  width: 200px;
+	height: 30px;
+	padding: 5px 24px;
+	box-sizing: border-box;
+	border: 0;
+	border-radius: 2px;
+  margin-right: 15px;
+	background: rgba(33, 33, 33, 0.05);
+	font-size: 1.2rem;
+}
+.search button:hover,
+.search button:focus{
+  border: 1px solid #03a67b;
+  color: #03a67b;
+  background: #fff;
+  cursor: pointer;
+}
+/*
+ * footer 영역.
+ * ---------------------------------
+ *              제목
+ *              내용
+ *             공유 리스트
+ * ---------------------------------
+ */
+.footer{
+  width: 1140px;
+  padding: 50px 0;
+  margin: 0 auto;
+  text-align: center;
+}
+.footer-logo{
+  margin: 0;
+}
+.footer .section-content{
+  width: 300px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.site-share-list{
+  list-style: none;
+  padding: 0;
+}
+.site-share-list li{
+  display: inline-block;
+}
+.site-share-list a{
+  padding: 5px;
+}
+.site-share-list a:hover,
+.site-share-list a:focus{
+  border-bottom: 1px solid rgba(51, 51, 51, 0.9);
+}

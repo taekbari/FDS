@@ -1,0 +1,474 @@
+@charset "UTF-8";
+@import "https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css";
+
+/*
+ * Global 영역.
+ */
+html{
+  font-size: 10px;
+}
+body{
+  font-family: 'Poppins', sans-serif;
+}
+a{
+  text-decoration: none;
+  color: rgba(51, 51, 51, 0.9);
+}
+/*
+ * float clearfix.
+ * float 영역 처리하기 위한 클래스.
+ */
+.clearfix::after{
+  display: block;
+  content: '';
+  clear: both;
+}
+/*
+ * text 안보이도록 설정.
+ */
+.hidden{
+  position: absolute;
+  left: -9999em;
+}
+/*
+ * 기본 article 제목과 내용 스타일.
+ */
+.article-title{
+  margin: 0;
+  font-size: 3.5rem;
+  font-weight: 600;
+  text-align: center;
+  color: #333;
+}
+.section-title{
+	font-size: 1.4rem;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: #333333;
+}
+.article-content, .section-content{
+  font-size: 1.4rem;
+  text-align: center;
+  line-height: 1.5;
+  color: rgba(51, 51, 51, 0.6);
+}
+
+/*
+ * header 영역.
+ * ---------------------------------
+ * 로고  메뉴                  링크 링크
+ * ---------------------------------
+ * 로고, 메뉴 배치는 float 사용.
+ */
+.header{
+  width: 1140px;
+  padding: 20px 0;
+  margin: 50px auto 0;
+}
+.logo{
+  margin: 0;
+  float: left;
+  height: 30px;
+  line-height: 30px;
+}
+.logo img{
+  vertical-align: middle;
+}
+.company-nav{
+  float: left;
+  margin-left: 20px;
+  font-size: 1.4rem;
+}
+.company-nav-list{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.company-nav-list li{
+  float: left;
+}
+.company-nav-list a{
+  display: inline-block;
+  padding: 5px 10px;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+.company-nav-list a:hover::after,
+.company-nav-list a:focus::after{
+  display: block;
+  content: '';
+  width: 100%;
+  margin-top: 3px;
+  border-bottom: 1px solid #000;
+}
+.member{
+  float: right;
+  font-size: 1.4rem;
+}
+.member button{
+	width: 100px;
+	height: 30px;
+	padding: 0;
+  border: 0;
+  background: #fff;
+	font-size: 1.4rem;
+	font-weight: 500;
+}
+.member button:hover,
+.member button:focus{
+  border: 1px solid #03a67b;
+ 	border-radius: 2px;
+  color: #03a67b;
+}
+/*
+ * introduce article 영역.
+ * ---------------------------------
+ *             제목
+ *             내용
+ *     내용
+ *                   내용
+ * ---------------------------------
+ * p요소가 말풍선 형태와 같이 위치를 다르게 갖으므로 position 사용.
+ */
+.introduce-article{
+  width: 1140px;
+  padding: 100px 0 400px 0;
+  margin: 0 auto;
+  background: #fff url(../images/image-iphone.png) no-repeat 50% 250px;
+}
+.introduce-article .article-title{
+  font-size: 4.5rem;
+}
+.introduce-article > .article-content{
+  width: 700px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.introduce-article .bubble{
+  position: relative;
+}
+.bubble .article-content{
+  position: absolute;
+  width: 260px;
+  padding: 15px 20px;
+  margin: 0;
+  border-radius: 2px;
+  font-size: 1.2rem;
+  text-align: left;
+  background: #03a67b;
+  color: #fff;
+}
+.bubble .article-content:first-child{
+  top: 90px;
+  left: 180px;
+}
+.bubble .article-content:last-child{
+  top: 230px;
+  right: 180px;
+}
+/*
+ * features article 영역.
+ * ---------------------------------
+ *     이미지         제목 & 내용
+ *   제목 & 내용         이미지
+ * ---------------------------------
+ * 요소 배열에는 float 사용.
+ */
+.features-article{
+  width: 1140px;
+  padding-top: 100px;
+  margin: 0 auto;
+}
+.features-article section{
+  display: inline-block;
+  float: left;
+  text-align: center;
+  margin-bottom: 100px;
+}
+.features-content{
+  width: 50%;
+  padding: 150px 50px 0 80px;
+  box-sizing: border-box;
+}
+.features-content .article-title,
+.features-content .article-content{
+  text-align: left;
+}
+.features-content .article-title{
+  position: relative;
+}
+.features-content .article-content{
+  width: 80%;
+}
+.features-content strong{
+  position: absolute;
+  font-size: 15.0rem;
+  top: -60px;
+  left: 0;
+  color: rgba(51, 51, 51, 0.08);
+}
+.features-article section:first-of-type .features-content{
+  float: right;
+}
+.features-article section:last-of-type .features-content{
+  float: left;
+}
+/*
+ * key feature article 영역.
+ * ---------------------------------
+ *               제목
+ *               내용
+ *  section1        section2
+ *  section3        section4
+ * ---------------------------------
+ * section 배열 float 사용.
+ */
+.key-features-article{
+  background: #fcfcfc;
+}
+.key-features{
+  width: 1140px;
+  padding: 100px 0;
+  margin: 0 auto;
+}
+.key-features .article-title,
+.key-features .article-content,
+.key-features .section-title,
+.key-features .section-content{
+  text-align: left;
+}
+.key-features .article-content{
+  width: 600px;
+}
+.key-features section{
+  position: relative;
+  float: left;
+  width: 49%;
+  padding: 20px 20px 20px 150px;
+  margin-right: 1%;
+  margin-top: 30px;
+  box-sizing: border-box;
+}
+.key-features section:nth-of-type(even){
+  margin-right: 0;
+}
+.features-img{
+  position: absolute;
+  top: 5px;
+  left: 0;
+  padding: 30px;
+  border-radius: 50%;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.04);
+  background: #fff;
+}
+
+/*
+ * protfolio article 영역.
+ * ---------------------------------
+ *               제목
+ *               내용
+ *  section1   section2    section3
+ *  이전 링크                 다음 링크
+ * ---------------------------------
+ * section 배열 float 사용.
+ * list로 section 영역 생성해도 될듯.
+ * 텍스트 링크는 마크업상 마지막. 위치 설정을 위해 position 사용.
+ */
+.portfolio-article{
+  width: 1140px;
+  padding: 100px 0;
+  margin: 0 auto;
+}
+.portfolio-article .article-content{
+  width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.portfolio{
+  position: relative;
+  margin-top: 50px;
+}
+.portfolio section{
+  position: relative;
+  float: left;
+  width: 341px;
+  margin-right: 58px;
+  padding: 200px 0 30px;
+  text-align: center;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.04);
+  background: #fff;
+}
+.portfolio section:last-of-type{
+  margin-right: 0;
+}
+.portfolio .section-sub-title{
+  font-size: 1.4rem;
+  font-weight: 500;
+	text-align: center;
+  line-height: 1.5;
+  color: rgba(51, 51, 51, 0.25);
+}
+.portfolio .section-content{
+  width: 200px;
+  margin: 0 auto;
+}
+.portfolio section img{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.prev-project-link, .next-project-link{
+  display: inline-block;
+  position: absolute;
+  width: 20px;
+  height: 38px;
+  top: 167px;
+}
+.prev-project-link{
+  left: -60px;
+}
+.next-project-link{
+  right: -60px;
+}
+/*
+ * crew article 영역.
+ * ---------------------------------
+ *               제목
+ *  사원1    사원2     사원3    사원4
+ * ---------------------------------
+ * li 배열에 flex 사용.
+ * 사람 정보를 나타내는 요소로 dt, dd 요소 사용.
+ * 공유 링크 나타내는 li 배열은 inline-block 사용.
+ */
+.crew-article{
+  background: #fcfcfc;
+}
+.crew{
+  width: 1140px;
+  padding: 100px 0;
+  margin: 0 auto;
+}
+.crew-list{
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin-top: 50px;
+}
+.crew-list > li{
+  width: 23%;
+  padding: 50px 30px 30px;
+  box-sizing: border-box;
+  background: #fff;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
+}
+.crew-list figure{
+  margin: 0;
+  text-align: center;
+}
+.crew-list dd{
+  margin: 0;
+}
+.crew-list .section-content{
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.crew-list .personal-share-list{
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+.crew-list .personal-share-list li{
+  display: inline-block;
+}
+.crew-list .personal-share-list a{
+  display: inline-block;
+  padding: 5px 10px;
+}
+.crew-list .personal-share-list a:hover,
+.crew-list .personal-share-list a:focus{
+  border-bottom: 1px solid rgba(51, 51, 51, 0.9);
+}
+/*
+ * contact article 영역.
+ * ---------------------------------
+ *               제목
+ *               내용
+ *             공유 리스트
+ * ---------------------------------
+ * li 배열에 inline-block 사용.
+ */
+.contact-article{
+  width: 1140px;
+  padding: 100px 0;
+  margin: 0 auto;
+}
+.contact-article .article-content{
+  width: 250px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.site-share-list{
+  padding: 0;
+  margin-top: 20px;
+  list-style: none;
+  text-align: center;
+}
+.site-share-list li{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 5px;
+  border: 1px solid rgba(51, 51, 51, 0.3);
+  border-radius: 15px;
+  text-align: center;
+  vertical-align: middle;
+}
+.site-share-list a{
+  padding: 5px;
+}
+.site-share-list img{
+  vertical-align: middle;
+}
+/*
+ * footer 영역.
+ * ---------------------------------
+ *   제목    리스트1  리스트2  리스트3
+ *   내용
+ * ---------------------------------
+ * section 배열에 float 사용.
+ */
+.footer{
+  width: 1140px;
+  padding: 30px 0;
+  margin: 0 auto;
+}
+.footer-logo{
+  margin: 0;
+}
+.footer-logo .section-content{
+  width: 200px;
+}
+.footer section{
+  float: left;
+  width: 23%;
+}
+.footer .section-title,
+.footer .section-content{
+  text-align: left;
+}
+.first-list, .second-list, .third-list{
+  padding: 0;
+  list-style: none;
+}
+.first-list a, .second-list a, .third-list a{
+  display: inline-block;
+  padding: 5px 0;
+}
+.first-list a:hover, .first-list a:focus,
+.second-list a:hover, .second-list a:focus,
+.third-list a:hover, .third-list a:focus{
+  border-bottom: 1px solid rgba(51, 51, 51, 0.9);
+}

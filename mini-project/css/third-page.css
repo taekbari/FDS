@@ -1,0 +1,413 @@
+@charset "UTF-8";
+@import "https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css";
+
+/*
+ * Global 영역.
+ */
+html{
+  font-size: 10px;
+}
+body{
+  font-family: 'Poppins', sans-serif;
+}
+a{
+  text-decoration: none;
+  color: rgba(51, 51, 51, 0.9);
+}
+/*
+ * float clearfix.
+ * float 영역 처리하기 위한 클래스.
+ */
+.clearfix::after{
+  display: block;
+  content: '';
+  clear: both;
+}
+/*
+ * text 안보이도록 설정.
+ */
+.hidden{
+  position: absolute;
+  left: -9999em;
+}
+/*
+ * 기본 article 제목과 내용 스타일.
+ */
+.article-title{
+  margin: 0;
+  font-size: 3.5rem;
+  font-weight: 600;
+  text-align: center;
+  color: #333;
+}
+.section-title{
+	font-size: 1.4rem;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: #333333;
+}
+.article-content, .section-content{
+  font-size: 1.4rem;
+  text-align: center;
+  line-height: 1.5;
+  color: rgba(51, 51, 51, 0.6);
+}
+/*
+ * 기본 button 스타일.
+ */
+.btn-default{
+  width: 180px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 2px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  background: #03a67b;
+  color: #fff;
+}
+/*
+ * 공통 넓이 지정.
+ */
+.header, .introduce, .information, .stories, .footer{
+  width: 1140px;
+  margin: 0 auto;
+}
+/*
+ * flex layout 설정.
+ */
+.flex-layout{
+ display: flex;
+ justify-content: space-around;
+}
+
+/*
+ * header 영역.
+ * ---------------------------------
+ * 로고                       회사 메뉴
+ * ---------------------------------
+ * 로고, 메뉴 배치는 float 사용.
+ * 회사 메뉴에 포함되는 li 요소는 inline-block 사용.
+ */
+.header{
+  margin-top: 50px;
+}
+.logo{
+  float: left;
+  margin: 0;
+}
+.logo a{
+  display: inline-block;
+  padding: 5px 0;
+}
+.company-menu{
+  float: right;
+}
+.company-menu-list{
+  margin: 0;
+  padding: 0;
+}
+.company-menu-list li{
+  display: inline-block;
+  font-size: 1.4rem;
+  color: rgba(51, 51, 51, 0.9);
+}
+.company-menu-list a{
+  display: inline-block;
+  padding: 10px 5px;
+}
+.company-menu-list a:hover,
+.company-menu-list a:focus{
+  border-bottom: 1px solid rgba(51, 51, 51, 0.9);
+}
+/*
+ * introduce 영역.
+ * ---------------------------------
+ * 제목
+ * 내용                      페이지 링크
+ * 버튼
+ * ---------------------------------
+ */
+.introduce{
+  position: relative;
+  margin-top: 50px;
+  padding: 100px 0;
+}
+.introduce .article-title{
+  font-size: 4.5rem;
+  text-align: left;
+}
+.introduce .article-content{
+  width: 430px;
+  text-align: left;
+}
+.introduce button{
+  margin-top: 10px;
+}
+.introduce button:hover,
+.introduce button:focus{
+  cursor: pointer;
+  border: 1px solid #03a67b;
+  color: #03a67b;
+  background: #fff;
+}
+.page-link{
+  position: absolute;
+  top: 50%;
+  right: -30px;
+  width: 10px;
+}
+.page-link a{
+  display: inline-block;
+  float: left;
+  width: 10px;
+  text-align: center;
+}
+/*
+ * intro video 영역.
+ * ---------------------------------
+ * 제목
+ * 내용                        비디오
+ * ---------------------------------
+ * 레이아웃 배열을 위해 제목 & 내용 영역을 div로 그룹.
+ * div와 비디오 영역을 float 사용하여 배열.
+ * 제목 & 내용을 세로 정렬하기 위해 position 사용.
+ */
+.intro-video{
+  background: #fcfcfc;
+}
+.intro-video-area{
+  position: relative;
+  width: 1140px;
+  padding: 100px 0;
+  margin: 50px auto 0;
+}
+.intro-video-title{
+  position: absolute;
+  top: 230px;
+  left: 0;
+  width: 400px;
+}
+.intro-video-title .article-title,
+.intro-video-title .article-content{
+  text-align: left;
+}
+.intro-video-content{
+  float: right;
+}
+/*
+ * information 영역.
+ * ---------------------------------
+ * 제목      제목      제목      제목
+ * 내용      내용      내용      내용
+ * ---------------------------------
+ * 각 영역 section으로 구분하여 flex 사용.
+ */
+.information{
+  margin-top: 50px;
+  padding: 50px 0;
+}
+.information .flex-layout section{
+  width: 200px;
+}
+.information .flex-layout strong{
+  color: #03a67b;
+  font-size: 3.5rem;
+  line-height: 1.5;
+}
+/*
+ * features 영역.
+ * ---------------------------------
+ *              제목
+ *              내용
+ *    특징1      특징2       튿징3
+ * ---------------------------------
+ * 각 영역 section으로 구분하여 flex 사용.
+ */
+.features{
+  margin-top: 50px;
+  padding: 50px 0;
+}
+.features .article-title,
+.features .article-content{
+  width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.features .article-content{
+  width: 600px;
+}
+.features .flex-layout{
+  width: 1140px;
+  margin: 50px auto 0;
+}
+.features section{
+  position: relative;
+  width: 300px;
+  padding-top: 80px;
+}
+.features section img{
+  position: absolute;
+  top: 0;
+  left: 118px;
+}
+/*
+ * stories 영역.
+ * ---------------------------------
+ *              제목
+ *              내용
+ *    특징1      특징2       특징3
+ * ---------------------------------
+ * 각 영역 section으로 구분하여 flex 사용.
+ */
+.stories{
+  margin-top: 50px;
+  padding: 50px 0;
+}
+.stories .article-content{
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.stories .flex-layout{
+  margin-top: 50px;
+}
+.stories figure{
+  margin: 0;
+}
+.stories figcaption{
+  width: 200px;
+  margin: 20px auto 0;
+  font-weight: 600;
+}
+.stories section .section-content{
+  width: 280px;
+  margin: 10px auto 0;
+}
+/*
+ * team 영역.
+ * ---------------------------------
+ *              제목
+ *              내용
+ *    팀원1      팀원2       팀원3
+ *    팀원4      팀원5       팀원6
+ * ---------------------------------
+ * 각 영역 section으로 구분하여 flex 사용.
+ */
+.team{
+  background: #fcfcfc;
+  margin-top: 50px;
+  padding: 50px 0;
+}
+.team .article-title,
+.team .article-content,
+.team .flex-layout{
+  width: 1140px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.team .article-content{
+  /*
+   * 브라우저 사이즈 줄였을 경우, 내용 부분의 동작이 달라져서
+   * 동작을 통일시키기 위해 padding으로 넓이 설정.
+   */
+  padding: 0 250px;
+  box-sizing: border-box;
+}
+.team .flex-layout{
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+.team section, .team figcaption{
+  width: 367px;
+  height: 250px;
+}
+.team section{
+  position: relative;
+  margin: 6px 0;
+}
+.team figure{
+  margin: 0;
+}
+.team figcaption{
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 70px;
+  box-sizing: border-box;
+  background: #e8e8e8;
+  display: none;
+}
+.team figcaption strong{
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.team figcaption.act{
+  display: block;
+}
+/*
+ * footer 영역.
+ * ---------------------------------
+ *    로고      제목       제목
+ *    내용      내용       내용
+ *                       입력창
+ * ---------------------------------
+ * 각 영역 section으로 구분하여 flex 사용.
+ */
+.footer{
+  margin-top: 30px;
+  padding: 20px 0;
+}
+.footer .flex-layout{
+  justify-content: flex-start;
+}
+.footer-logo h2{
+  height: 30px;
+}
+.footer-logo .section-content,
+.footer-contact .section-title,
+.footer-contact .section-content,
+.footer-subscribe .section-title,
+.footer-subscribe .section-content{
+  text-align: left;
+}
+.footer-contact .section-title,
+.footer-subscribe .section-title{
+  height: 30px;
+  line-height: 30px;
+}
+.footer-logo .section-content,
+.footer-contact .section-content,
+.footer-subscribe .section-content{
+  width: 377px;
+}
+.footer-logo .section-content,
+.footer-contact .section-content{
+  padding-right: 90px;
+  box-sizing: border-box;
+}
+.footer-subscribe{
+  font-size: 0;
+}
+.footer-subscribe .section-content{
+  padding-right: 130px;
+  box-sizing: border-box;
+}
+.footer-subscribe input{
+  width: 239px;
+	height: 30px;
+	padding: 5px 24px;
+	box-sizing: border-box;
+	border: 0;
+	border-radius: 2px;
+	background: rgba(33, 33, 33, 0.05);
+	font-size: 1.2rem;
+}
+.footer-subscribe button{
+  width: 35px;
+  text-indent: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background: #03a67b url(../images/icon-arrow-right.png) no-repeat 50% 50%;
+}

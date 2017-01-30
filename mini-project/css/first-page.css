@@ -1,0 +1,362 @@
+@charset "UTF-8";
+@import "https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css";
+
+/*
+ * Global 영역.
+ */
+html{
+	font-size: 10px;
+}
+body{
+	width: 1140px;
+  margin: 0 auto;
+	font-family: 'Poppins', sans-serif;
+}
+a{
+	text-decoration: none;
+  color: #515151;
+}
+/*
+ * float clearfix.
+ * float 영역 처리하기 위한 클래스.
+ */
+.clearfix::after{
+	display: block;
+  content: '';
+  clear: both;
+}
+.hidden{
+	position: absolute;
+	left: -9999em;
+}
+/*
+ * article & section 에서 사용하는 공통 속성들.
+ * 제목 & 내용.
+ */
+.article-title{
+	margin: 0;
+	font-size: 3.5rem;
+	font-weight: 600;
+	text-align: center;
+	color: #333333;
+}
+.section-title{
+	font-size: 1.4rem;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: #333333;
+}
+.article-content, .section-content{
+	font-size: 1.4rem;
+	line-height: 1.5em;
+	color: rgba(51, 51, 51, 0.6);
+	text-align: center;
+}
+/*
+ * 기본 버튼 스타일.
+ */
+.btn-default{
+ 	width: 180px;
+ 	height: 30px;
+ 	padding: 0;
+ 	border: 1px solid #03a67b;
+ 	border-radius: 2px;
+	background: #fff;
+ 	font-size: 1.2rem;
+ 	font-weight: 500;
+	color: #03a67b;
+ }
+ .btn-bg-fill{
+	 background: #03a67b;
+	 color: #fff;
+ }
+
+/*
+ * header 영역.
+ * ---------------------------------
+ * logo  nav                    div
+ * ---------------------------------
+ * 크게 위와 같이 구성.
+ * float 사용해서 레이아웃 정렬.
+ */
+.header{
+  margin-top: 71px;
+}
+/*
+ * logo 영역.
+ * 링크 처리를 위해  h1 > a > img 순으로 적업.
+ */
+.logo{
+  float: left;
+	margin: 0;
+}
+.logo a{
+	display: block;
+	width: 70px;
+	height: 21px;
+	padding: 9px 9px 9px 0;
+}
+/*
+ * company menu 영역.
+ * li 요소 float 사용해서 정렬.
+ */
+.company-menu{
+  float: left;
+	font-size: 1.4rem;
+}
+.company-menu ul{
+	margin: 0;
+}
+.company-menu li{
+  float: left;
+	list-style: none;
+}
+/*
+ * menu list 와 member 영역에서 공통으로 사용하는 <a> 요소 처리.
+ */
+.company-menu a, .member a{
+  float: left;
+	height: 15px;
+  padding: 12px 10px;
+	font-size: 1.4rem;
+}
+.company-menu a:hover::after,
+.company-menu a:focus::after,
+.member a:hover::after,
+.member a:focus::after
+{
+	display: block;
+  content: '';
+  width: 100%;
+  margin-top: 3px;
+  border-bottom: 1px solid #000;
+}
+/*
+ * member 영역.
+ * <a> 와 <button> 요소 포함하는 요소.
+ */
+.member{
+  float: right;
+}
+.member .btn-default{
+	width: 125px;
+  height: 38px;
+	padding: 10px 36px 10px 36px;
+	font-size: 1.2rem;
+}
+.member button:hover,
+.member button:focus{
+	background: #03a67b;
+	color: #fff;
+}
+/*
+ * main 영역.
+ * 여러개의 article 포함.
+ */
+/*
+ * article 영역에서 h2와 p 요소는 동일한 스타일을 갖으므로,
+ * 동일하게 적용해 주자.
+ */
+.introduce{
+	padding: 216px 0 270px 0;
+	background: #fff url(../images/image-iphone.png) no-repeat 750px 50px;
+}
+.introduce .article-title{
+	width: 501px;
+	height: 52px;
+	font-size: 4.5rem;
+	text-align: left;
+}
+.introduce .article-content{
+	width: 528px;
+	height: 41px;
+	margin: 25px 0 36px 0;
+	text-align: left;
+}
+/* fieldset 초기화. */
+.introduce fieldset{
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+.introduce input{
+	width: 239px;
+	height: 30px;
+	padding: 5px 24px;
+	box-sizing: border-box;
+	border: 0;
+	border-radius: 2px;
+	background: rgba(33, 33, 33, 0.05);
+	font-size: 1.2rem;
+}
+.introduce .btn-default{
+	/* inline 요소 간의 공백 부분을 없애기 위한 처리. */
+	position: relative;
+	top: 0;
+	left: -3px;
+}
+.introduce button:hover,
+.introduce button:focus{
+	background: #fff;
+	color: #03a67b;
+}
+/*
+ * features article 영역.
+ * 3부분의 section 으로 구성.
+ * 특징 1, 2, 3.
+ * 특징 가로 배열은 float 사용.
+ */
+.features{
+	padding: 50px;
+}
+.features .article-title{
+	margin-bottom: 15px;
+}
+.features .article-content{
+	width: 600px;
+	margin: 0 auto;
+}
+.features section{
+	float: left;
+	width: 29%;
+	padding-top: 70px;
+	margin-top: 66px;
+	margin-right: 6.5%;
+	background: #fff url(../images/icon-check.png) no-repeat 50% 0;
+}
+.features section:last-of-type{
+	margin-right: 0;
+}
+/*
+ * 소개 비디오 영역.
+ * 재생 이미지의 경우, 현재 페이지에서 보여주기 위한 요소임.
+ * position 사용하여 위치 지정.
+ */
+.intro-video{
+	width: 650px;
+	padding: 50px 0;
+	margin: 0 auto;
+	position: relative;
+}
+.intro-video-content{
+	margin-top: 25px;
+}
+.intro-video img{
+	position: absolute;
+	top: 281px;
+	left: 273px;
+}
+/*
+ * Try It Now 영역.
+ */
+.try-it-now{
+	width: 550px;
+	padding: 50px 0;
+	margin: 0 auto;
+}
+.try-it-now .article-content{
+	width: 500px;
+	margin: 15px auto 0 auto;
+}
+.try-btn{
+	margin-top: 30px;
+	text-align: center;
+}
+.try-it-now .btn-default{
+	margin: 0 5px;
+}
+.try-it-now .btn-bg-fill:hover,
+.try-it-now .btn-bg-fill:focus{
+	background: #fff;
+	color: #03a67b;
+}
+.try-it-now .btn-bg-fill:hover,
+.try-it-now .btn-bg-fill:focus{
+	background: #fff;
+	color: #03a67b;
+}
+/*
+ * Our Clients 영역.
+ */
+.our-clients{
+	padding: 50px;
+}
+.our-clients .article-content{
+	width: 600px;
+	margin: 15px auto 0 auto;
+}
+.our-clients section{
+	float: left;
+	width: 29%;
+	margin-top: 50px;
+	margin-right: 6.5%;
+}
+.our-clients section:last-of-type{
+	margin-right: 0;
+}
+.our-clients figure{
+	width: 100px;
+	margin: 0 auto;
+}
+.our-clients figcaption{
+	margin-top: 10px;
+	color: rgba(51, 51, 51, 0.25);
+}
+/*
+ * footer 영역.
+ * 사이트 이용 안내 링크 리스트 섹션,
+ * 사이트 공유 링크 리스트 섹션,
+ * copyright 영역으로 구성.
+ */
+.footer{
+	position: relative;
+	padding: 50px 0;
+}
+.site-use-list{
+	margin: 0;
+	text-align: center;
+}
+.site-use-list li, .site-share-list li{
+	display: inline-block;
+	list-style: none;
+	font-size: 1.4rem;
+	height: 20px;
+}
+.site-use-list a{
+	padding: 0 10px;
+	color: #333333;
+}
+.site-share-section{
+	position: absolute;
+	top: 50px;
+	right: 0;
+}
+.site-share-list{
+	margin: 0;
+}
+.site-share-list li{
+	text-align: center;
+}
+.site-share-list a{
+	display: inline-block;
+	width: 30px;
+	height: 20px;
+	line-height: 20px;
+	padding: 0 5px;
+	box-sizing: border-box;
+}
+.copyright{
+	position: absolute;
+	top: 50px;
+	left: 0;
+	margin: 0;
+	font-size: 1.6rem;
+	color: rgba(51, 51, 51, 0.7);
+}
+.site-use-list a:hover,
+.site-use-list a:focus,
+.site-share-list a:hover,
+.site-share-list a:focus{
+	border-bottom: 1px solid #333;
+}
