@@ -1,0 +1,61 @@
+%dropdown
+  @extend %reset-ul
+
+  & li
+    @extend %box-shadow
+    @extend %box-bottom-shadow
+    position: relative
+    width: 150px
+    height: 50px
+    font-size: 14px
+    line-height: 50px
+
+    &::after
+      position: absolute
+      top: 0
+      right: 10px
+      content: url(../images/icon-down.png)
+
+    &:active
+      @extend %box-top-shadow
+      box-shadow: none
+
+  & li:not(.select-item)
+    &::after
+      content: ''
+    display: none
+
+  &:hover
+    opacity: 0.8
+
+  // & li.select-item
+  //   &::after
+      // content: url(../images/icon-up.png)
+
+.dropdown-default
+  @extend %dropdown
+  background: #aaa
+
+.dropdown-hot
+  @extend %dropdown
+  background: $hot-color
+  &:active
+    background: darken($hot-color, 20%)
+
+.dropdown-sunny
+  @extend %dropdown
+  background: $sunny-color
+  &:active
+    background: darken($sunny-color, 20%)
+
+.dropdown-fresh
+  @extend %dropdown
+  background: $fresh-color
+  &:active
+    background: darken($fresh-color, 20%)
+
+.dropdown-sky
+  @extend %dropdown
+  background: $sky-color
+  &:active
+    background: darken($sky-color, 20%)

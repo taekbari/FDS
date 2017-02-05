@@ -1,0 +1,205 @@
+div {
+  margin: 20px;
+}
+
+div button, .dropdown-group ul {
+  margin: 0 10px;
+  vertical-align: top;
+}
+
+div ul {
+  float: left;
+}
+
+.clearfix::after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+.button-default, .button-hot, .button-sunny, .button-fresh, .button-sky, .button-hover, .button-active {
+  padding: 0 1.2em;
+  border-right: none;
+  border-left: none;
+  border-radius: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+}
+
+.dropdown-default, .dropdown-hot, .dropdown-sunny, .dropdown-fresh, .dropdown-sky {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  border-radius: 3px;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+.dropdown-default li, .dropdown-hot li, .dropdown-sunny li, .dropdown-fresh li, .dropdown-sky li {
+  padding: 0 1.2em;
+  box-sizing: border-box;
+  font-weight: bold;
+  color: #fff;
+}
+
+.button-default, .button-hot, .button-sunny, .button-fresh, .button-sky, .button-hover, .button-active, .dropdown-default li, .dropdown-hot li, .dropdown-sunny li, .dropdown-fresh li, .dropdown-sky li {
+  box-shadow: 1px 3px 4px 0 rgba(0, 0, 0, 0.22);
+}
+
+.button-default:active, .button-hot:active, .button-sunny:active, .button-fresh:active, .button-sky:active, .button-hover:active, .button-active:active, .dropdown-default li:active, .dropdown-hot li:active, .dropdown-sunny li:active, .dropdown-fresh li:active, .dropdown-sky li:active {
+  border-bottom: none;
+  border-top: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.button-default, .button-hot, .button-sunny, .button-fresh, .button-sky, .button-hover, .button-active, .dropdown-default li, .dropdown-hot li, .dropdown-sunny li, .dropdown-fresh li, .dropdown-sky li {
+  border-top: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.button-default, .button-hot, .button-sunny, .button-fresh, .button-sky, .button-hover, .button-active {
+  width: 150px;
+  height: 50px;
+  font-size: 14px;
+}
+
+.button-default:hover, .button-hot:hover, .button-sunny:hover, .button-fresh:hover, .button-sky:hover, .button-hover:hover, .button-active:hover {
+  opacity: 0.8;
+}
+
+.button-default:active, .button-hot:active, .button-sunny:active, .button-fresh:active, .button-sky:active, .button-hover:active, .button-active:active {
+  box-shadow: none;
+}
+
+.button-default {
+  background: #fff;
+  color: #000;
+}
+
+.button-hot {
+  background: #db5565;
+}
+
+.button-hot:active {
+  background: #a72333;
+}
+
+.button-sunny {
+  background: #f4ad49;
+}
+
+.button-sunny:active {
+  background: #cb7c0c;
+}
+
+.button-fresh {
+  background: #51bf87;
+}
+
+.button-fresh:active {
+  background: #2e7c54;
+}
+
+.button-sky {
+  background: #0bacd3;
+}
+
+.button-sky:active {
+  background: #065d72;
+}
+
+.button-hover {
+  opacity: 0.8;
+}
+
+.button-active {
+  border-bottom: none;
+  border-top: 2px solid rgba(0, 0, 0, 0.2);
+  box-shadow: none;
+}
+
+.button-active.button-hot {
+  background: #a72333;
+}
+
+.button-active.button-sunny {
+  background: #cb7c0c;
+}
+
+.button-active.button-fresh {
+  background: #2e7c54;
+}
+
+.button-active.button-sky {
+  background: #065d72;
+}
+
+.dropdown-default li, .dropdown-hot li, .dropdown-sunny li, .dropdown-fresh li, .dropdown-sky li {
+  position: relative;
+  width: 150px;
+  height: 50px;
+  font-size: 14px;
+  line-height: 50px;
+}
+
+.dropdown-default li::after, .dropdown-hot li::after, .dropdown-sunny li::after, .dropdown-fresh li::after, .dropdown-sky li::after {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  content: url(../images/icon-down.png);
+}
+
+.dropdown-default li:active, .dropdown-hot li:active, .dropdown-sunny li:active, .dropdown-fresh li:active, .dropdown-sky li:active {
+  box-shadow: none;
+}
+
+.dropdown-default li:not(.select-item), .dropdown-hot li:not(.select-item), .dropdown-sunny li:not(.select-item), .dropdown-fresh li:not(.select-item), .dropdown-sky li:not(.select-item) {
+  display: none;
+}
+
+.dropdown-default li:not(.select-item)::after, .dropdown-hot li:not(.select-item)::after, .dropdown-sunny li:not(.select-item)::after, .dropdown-fresh li:not(.select-item)::after, .dropdown-sky li:not(.select-item)::after {
+  content: '';
+}
+
+.dropdown-default:hover, .dropdown-hot:hover, .dropdown-sunny:hover, .dropdown-fresh:hover, .dropdown-sky:hover {
+  opacity: 0.8;
+}
+
+.dropdown-default {
+  background: #aaa;
+}
+
+.dropdown-hot {
+  background: #db5565;
+}
+
+.dropdown-hot:active {
+  background: #a72333;
+}
+
+.dropdown-sunny {
+  background: #f4ad49;
+}
+
+.dropdown-sunny:active {
+  background: #cb7c0c;
+}
+
+.dropdown-fresh {
+  background: #51bf87;
+}
+
+.dropdown-fresh:active {
+  background: #2e7c54;
+}
+
+.dropdown-sky {
+  background: #0bacd3;
+}
+
+.dropdown-sky:active {
+  background: #065d72;
+}
+
+/*# sourceMappingURL=../map/style.css.map */
