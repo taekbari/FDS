@@ -1,0 +1,51 @@
+// UI - button
+// 모양, 색, 글자 크기, 정렬, 버튼 크기
+// 둥근 테두리형 버튼이 기본으로 사용
+%button
+  @extend %reset-button
+  @extend %box-shadow
+  +border-shadow()
+  width: 150px
+  height: 50px
+  font-size: 14px
+
+.button-default
+  @extend %button
+  background: #fff
+  color: #000
+
+.button-hot
+  @extend %button
+  +setting-background($hot-color)
+
+.button-sunny
+  @extend %button
+  +setting-background($sunny-color)
+
+.button-fresh
+  @extend %button
+  +setting-background($fresh-color)
+
+.button-sky
+  @extend %button
+  +setting-background($sky-color)
+
+// 확인을 위한 클래스. (hover & active)
+// 추후에 제거해주자.
+.button-hover
+  @extend %button
+  opacity: 0.8
+
+.button-active
+  @extend %button
+  +border-shadow('top')
+  box-shadow: none
+
+  &.button-hot
+    background: shade($hot-color, 20%)
+  &.button-sunny
+    background: shade($sunny-color, 20%)
+  &.button-fresh
+    background: shade($fresh-color, 20%)
+  &.button-sky
+    background: shade($sky-color, 20%)
