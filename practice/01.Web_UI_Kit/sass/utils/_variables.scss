@@ -1,0 +1,15 @@
+// background color setting
+$hot-color    : #db5565;
+$sunny-color  : #f4ad49;
+$fresh-color  : #51bf87;
+$sky-color    : #0bacd3;
+
+// font color
+$text-color: #fff;
+
+$color-map: (
+  'hot'    : $hot-color,
+  'sunny'  : $sunny-color,
+  'fresh'  : $fresh-color,
+  'sky'    : $sky-color
+);

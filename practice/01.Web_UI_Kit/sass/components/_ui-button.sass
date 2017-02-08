@@ -1,0 +1,32 @@
+// UI - button
+// 모양, 색, 글자 크기, 정렬, 버튼 크기
+// 둥근 테두리형 버튼이 기본으로 사용
+
+%default-button-style
+  padding: 0 em(18px)
+  border-radius: 3px
+  text-align: center
+  text-transform: uppercase
+  font-weight: bold
+  color: $text-color
+
+.button
+  @extend %reset-button
+  @extend %default-button-style
+  @extend %box-shadow
+  +border-shadow()
+  width: 150px
+  height: 50px
+
+  @each $name, $color in $color-map
+    &--#{$name}
+      @extend .button
+      +setting-background($color)
+      // 스타일 확인을 위한 부분.
+      // 추후에 제거하고 사용.
+      &.is-hover
+        opacity: 0.8
+      &.is-active
+        +border-shadow('top')
+        box-shadow: none
+        background: shade($color, 20%)
