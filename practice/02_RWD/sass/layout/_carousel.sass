@@ -7,6 +7,8 @@
 
 .carousel-figure
   height: $grid-height * 12
+  @media screen and (min-width: 760px)
+    height: $grid-height * 14
   &__heading
     @extend %hidden
   &__img
@@ -23,6 +25,8 @@
       color: #fff
       transform: translate(-50%, -50%)
   & figcaption
+    @media screen and (min-width: 760px)
+      display: none
     position: absolute
     top: $grid-height
     right: 0
@@ -34,15 +38,25 @@
 
 .carousel__page-link
   display: none
+  position: absolute
+  bottom: 0
+  left: 0
+  margin-bottom: $grid-height
+  text-align: center
+  @media screen and (min-width: 760px)
+    display: block
   & a
     display: inline-block
     width: 15px
     height: 15px
     border-radius: 8px
+    margin-right: 10px
     background: $theme-pink-color
     text-indent: -9999em
     &.is-active
       background: #fff
+  & a:last-of-type
+    margin-right: 0
 
 .carousel__direction-link
   &--prev,

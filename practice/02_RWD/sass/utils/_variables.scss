@@ -6,6 +6,17 @@ $root-font-size: 16px !default;
 $theme-pink-color: #f3987b;
 
 /*
+ * 스크린 사이즈 변경으로 인해 필요한 변수
+ */
+/*
+ * margin or padding 에서 사용할 변수
+ * mobile  : 6.25%
+ * tablet  : 3.9473684211%
+ * desktop : auto
+ */
+$body-gap: 6.25% !default;
+
+/*
  * 그리드 적용을 위한 변수
  */
 $grid-height: 24px !default;
