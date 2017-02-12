@@ -1,0 +1,27 @@
+/*
+ * 변수 선언
+ */
+
+$root-font-size: 16px !default;
+$theme-pink-color: #f3987b;
+
+/*
+ * 그리드 적용을 위한 변수
+ */
+$grid-height: 24px !default;
+$grid-gutter: 20px;
+$grid-column-numbr: (
+  'mobile' : 4,
+  'tablet' : 8,
+  'desktop': 12
+);
+$gride-width-map: (
+  'mobile' : 90px,
+  'tablet' : 70px,
+  'desktop': 60px
+);
+$total-width-map: (
+  'mobile' : 420px,
+  'tablet' : 700px,
+  'desktop': 940px
+);

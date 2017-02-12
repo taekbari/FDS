@@ -1,0 +1,42 @@
+/*
+ * grid layout */
+
+.grid::after
+  display: block
+  content: ''
+  clear: both
+
+[class*='mobile-'],
+[class*='tablet-'],
+[class*='desktop-']
+  float: left
+
+@each $type, $number in $grid-column-numbr
+  @for $i from 1 through $number
+    .#{$type}-#{$i},
+      @if $type == 'tablet'
+        @media screen and (min-width: 760px)
+          width: get-width($type, $i)
+          padding-right: $grid-gutter
+          &-last
+            width: get-width($type, $i, true)
+      @else if $type == 'desktop'
+        @media screen and (min-width: 1024px)
+          width: get-width($type, $i)
+          padding-right: $grid-gutter
+          &-last
+            width: get-width($type, $i, true)
+      @else
+        width: get-width($type, $i)
+        padding-right: $grid-gutter
+        &-last
+          width: get-width($type, $i, true)
+    .#{$type}-push-#{$i}
+      @if $type == 'tablet'
+        @media screen and (min-width: 760px)
+          margin-left: get-width($type, $i)
+      @else if $type == 'desktop'
+        @media screen and (min-width: 1024px)
+          margin-left: get-width($type, $i)
+      @else
+        margin-left: get-width($type, $i)

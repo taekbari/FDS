@@ -5,19 +5,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Responsive Web Design</title>
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /*.display {
+      visibility: hidden;
+    }
+    .container {
+      margin: 0 6.25%;
+      position: relative;
+    }
+    .container::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, transparent 23px, #ccc 23px),
+                  linear-gradient(90deg, hsla(226, 54%, 75%, 0.24) 81.8181818182%, transparent 81.8181818182%);
+      background-size: 1px 24px, 26.1904761905% 1px;
+    }
+
+    @media screen and (min-width: 760px) {
+      body {
+        margin: 0 3.9473684211%;
+      }
+      .container::before {
+        background: linear-gradient(180deg, transparent 23px, #ccc 23px), linear-gradient(90deg, hsla(226, 54%, 75%, 0.24) 77.7777777778%, transparent 77.7777777778%);
+        background-size: 1px 24px, 12.8571428571% 1px;
+      }
+    }
+
+    @media screen and (min-width: 1024px) {
+      body {
+        width: 940px;
+        margin: 0 auto;
+      }
+      .container::before {
+        background: linear-gradient(180deg, transparent 23px, #ccc 23px), linear-gradient(90deg, hsla(226, 54%, 75%, 0.24) 75%, transparent 75%);
+        background-size: 1px 24px, 8.5106382979% 1px;
+      }
+    }*/
+  </style>
   <!-- FontAwesome link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+  <div class="container">
   <!-- header start -->
-  <header>
+  <header class="header grid">
     <!-- header logo -->
-    <h1><a href="#"><i class="fa fa-paint-brush" aria-hidden="true"></i> logo</a></h1>
+    <h1 class="header-logo mobile-2 tablet-2">
+      <a href="#"><i class="fa fa-paint-brush" aria-hidden="true"></i> logo</a>
+    </h1>
     <!-- hambuger menu button -->
     <!-- mobile & tablet -->
-    <button type="button"><i class="fa fa-bars" aria-hidden="true"></i></button>
+    <div class="header--button mobile-push-1 mobile-1-last tablet-push-5 tablet-1-last">
+      <button type="button"><i class="fa fa-bars" aria-hidden="true"></i></button>
+    </div>
     <!-- menu list -->
-    <nav>
+    <nav class="header--gnb mobile-4-last">
       <h2>menu</h2>
       <ul>
         <li><a href="">home</a></li>
@@ -37,95 +82,112 @@
       <h2>video content</h2>
       <!-- video content -->
       <div class="video-slider__content">
-        <video src="" autoplay poster="">
-        </video>
+        <i class="fa fa-play-circle" aria-hidden="true"></i>
+        <!-- <iframe src="https://www.youtube.com/embed/ByRxR9_4r10"  allowfullscreen></iframe> -->
       </div>
       <!-- move link -->
-      <a href="#">before page</a>
-      <a href="#">after page</a>
+      <a href="#" class="video-slider__link--prev"><img src="images/arrow-left.png" alt="before page"></a>
+      <a href="#" class="video-slider__link--next"><img src="images/arrow-right.png" alt="after page"></a>
     </section>
     <!-- video slider end -->
     <!-- article content start -->
-    <section class="article-content">
+    <section class="article">
       <h2>글이 작품이 되는 공간</h2>
       <!-- mobile 환경에서는 p 영역 표시하지 않음. -->
       <article>
-        <h3>크려고 아픈 거야</h3>
-        <p>어렸을 적 아플 때마다 어머니는 내게 말씀하셨다. "괜찮아, 크려고 그러는 거야." 온몸을 바르르 떨며 토악질을 하는 둘째 녀석에게 내가 해줄 수 있는 건 그 말을 그대로 전하는 거였다. 돌이켜보니 내 어릴 적 아팠던 그때, 어머니의 그 한 마디 한 마디가 어쩐지 위로가 되곤 했다는 기억이 떠올랐다. 둘째 녀석도 나와 같은 걸 느껴서일까. 뭔지 모를 고개를 끄덕이며 이른 아침 다시 잠을 청했다.</p>
-        <img src="images/" alt="">
+        <div class="article__content">
+          <h3>크려고 아픈 거야</h3>
+          <p>어렸을 적 아플 때마다 어머니는 내게 말씀하셨다. "괜찮아, 크려고 그러는 거야." 온몸을 바르르 떨며 토악질을 하는 둘째 녀석에게 내가 해줄 수 있는 건 그 말을 그대로 전하는 거였다. 돌이켜보니 내 어릴 적 아팠던 그때, 어머니의 그 한 마디 한 마디가 어쩐지 위로가 되곤 했다는 기억이 떠올랐다. 둘째 녀석도 나와 같은 걸 느껴서일까. 뭔지 모를 고개를 끄덕이며 이른 아침 다시 잠을 청했다.</p>
+        </div>
+        <img src="images/photo.png" alt="크려고 아픈 거야">
       </article>
       <article>
-        <h3>아파야만 클 수 있을까?</h3>
-        <p>아픈 것과 크는 것이 서로 필요충분조건은 아니다. 크기 위해 아파야 할 의무도 없다. 다만, 우리는 아플 때도 있고 그러지 않을 때도 있다. 커가는 것은 별개의 문제다. 여기까지가 생물학적 해석이었다면 우리는 다시 다른 말을 떠올릴 수 있을 것이다. '아픔'과 '성장'은 비단 성장기에 있는 어린이들에게만 적용되는 말이 아니기 때문이다. 다 큰 어른들도 하루하루 아프고 성장해간다. 어릴 적과 다른 것은 아픈 것과 크는 것이 가끔은 필요충분조건이 성립된다는 것이다. '아픔'은 '깨달음'을 동반하는 경우가 많기 때문이다. '성장'은 이런 '깨달음'을 발판 삼아 이루어지기 때문이다. 다만, 절대적으로 필요충분조건은 아니다.</p>
-        <img src="images/" alt="">
+        <div class="article__content">
+          <h3>아파야만 클 수 있을까?</h3>
+          <p>아픈 것과 크는 것이 서로 필요충분조건은 아니다. 크기 위해 아파야 할 의무도 없다. 다만, 우리는 아플 때도 있고 그러지 않을 때도 있다. 커가는 것은 별개의 문제다. 여기까지가 생물학적 해석이었다면 우리는 다시 다른 말을 떠올릴 수 있을 것이다. '아픔'과 '성장'은 비단 성장기에 있는 어린이들에게만 적용되는 말이 아니기 때문이다. 다 큰 어른들도 하루하루 아프고 성장해간다. 어릴 적과 다른 것은 아픈 것과 크는 것이 가끔은 필요충분조건이 성립된다는 것이다. '아픔'은 '깨달음'을 동반하는 경우가 많기 때문이다. '성장'은 이런 '깨달음'을 발판 삼아 이루어지기 때문이다. 다만, 절대적으로 필요충분조건은 아니다.</p>
+        </div>
+        <img src="images/photo.png" alt="아파야만 클 수 있을까">
       </article>
       <article>
-        <h3>아픔만 있는 요즘 청춘들</h3>
-        <p>독이 바짝 오른 사람이나 정말 처절하게 급박한 사람에게 농담이나 어설픈 말의 위로는 곧이 들리지 않는다. '아프니까 청춘이다'라는 위로는 '아프면 환자지 그게 청춘이냐?'라는 비아냥으로 왜곡되었다. '요즘 젊은것들은 낭만이 없어 낭만이'라는 기성세대라 쓰고 꼰대라 읽히는 사람들의 말에, 정말로 낭만을 모르는 건 아닐까 하는 돌아봄 보다는 성토를 일삼는다. 정말로 아프기 때문이다. 아프기만 하기 때문이다. '요즘 것'들에 대한 성의 없는 타박은 아픈 청춘들에게 또 한 번의 상처와 멍울을 안긴다.</p>
-        <img src="images/" alt="">
+        <div class="article__content">
+          <h3>아픔만 있는 요즘 청춘들</h3>
+          <p>독이 바짝 오른 사람이나 정말 처절하게 급박한 사람에게 농담이나 어설픈 말의 위로는 곧이 들리지 않는다. '아프니까 청춘이다'라는 위로는 '아프면 환자지 그게 청춘이냐?'라는 비아냥으로 왜곡되었다. '요즘 젊은것들은 낭만이 없어 낭만이'라는 기성세대라 쓰고 꼰대라 읽히는 사람들의 말에, 정말로 낭만을 모르는 건 아닐까 하는 돌아봄 보다는 성토를 일삼는다. 정말로 아프기 때문이다. 아프기만 하기 때문이다. '요즘 것'들에 대한 성의 없는 타박은 아픈 청춘들에게 또 한 번의 상처와 멍울을 안긴다.</p>
+        </div>
+        <img src="images/photo.png" alt="아픔만 있는 요즘 청춘들">
       </article>
     </section>
     <!-- article content end -->
     <!-- carousel start -->
     <section class="carousel">
-      <h2>image slider</h2>
-      <figure>
-        <h3>first</h3>
-        <img src="images/" alt="">
+      <h2 class="carousel__heading">image slider</h2>
+      <figure class="carousel-figure">
+        <h3 class="carousel-figure__heading">first</h3>
+        <!-- 지금은 보여주기 위한 부분으로 div 사용함 -->
+        <!-- 추후에 img 태그로 변경해야함 -->
+        <div class="carousel-figure__img">
+          <i class="fa fa-picture-o" aria-hidden="true"></i>
+        </div>
+        <!-- <img src="images/" alt=""> -->
         <!-- mobile 에서만 figcaption 필요 -->
         <figcaption>
           <strong>1</strong> / 5
         </figcaption>
       </figure>
       <!-- page link는 mobile에서는 필요 없음 -->
-      <div class="carousel__page-link">
+      <div class="carousel__page-link tablet-push-3 tablet-2">
         <a href="#">1</a>
-        <a href="#">2</a>
+        <a href="#" class="is-active">2</a>
         <a href="#">3</a>
         <a href="#">4</a>
         <a href="#">5</a>
       </div>
-      <div class="carousel__direction-link">
-        <a href="#">before</a>
-        <a href="#">after</a>
-      </div>
+      <a href="#" class="carousel__direction-link--prev"><img src="images/arrow-left-white.png" alt="previous"></a>
+      <a href="#" class="carousel__direction-link--next"><img src="images/arrow-right-white.png" alt="next"></a>
     </section>
     <!-- carousel end -->
     <!-- creator list start -->
     <section class="creator">
-      <h2>작품을 만드는 사람들</h2>
+      <h2 class="creator__heading">작품을 만드는 사람들</h2>
       <ul class="creator__list">
         <li>
-          <figure>
-            <img src="images/" alt="">
-            <figcaption>
-              <strong>스테르담</strong><br>
-              글쓰고, 노래하고, 강의하는, 나는 스테르담입니다.
+          <figure class="grid">
+            <div class="creator__list--img mobile-1">
+              <img class="" src="images/user.png" alt="스테르담">
+            </div>
+            <figcaption class="mobile-3-last">
+              <p><strong>스테르담</strong><br>
+              글쓰고, 노래하고, 강의하는, 나는 스테르담입니다.</p>
             </figcaption>
           </figure>
         </li>
         <li>
-          <figure>
-            <img src="images/" alt="">
-            <figcaption>
+          <figure class="grid">
+            <div class="creator__list--img mobile-1">
+              <img class="" src="images/user.png" alt="작은바이킹">
+            </div>
+            <figcaption class="mobile-3-last">
               <strong>작은바이킹</strong><br>
               그림을 못 그려 사진일기를 쓰는 카피라이터입니다.
             </figcaption>
           </figure>
         </li>
         <li>
-          <figure>
-            <img src="images/" alt="">
-            <figcaption>
+          <figure class="grid">
+            <div class="creator__list--img mobile-1">
+              <img class="" src="images/user.png" alt="라이카">
+            </div>
+            <figcaption class="mobile-3-last">
               <strong>라이카</strong><br>
               고용주를 찾아 헤매는 프리랜서 에디터 겸 반백수입다.
             </figcaption>
           </figure>
         </li>
         <li>
-          <figure>
-            <img src="images/" alt="">
-            <figcaption>
+          <figure class="grid">
+            <div class="creator__list--img mobile-1">
+              <img class="" src="images/user.png" alt="기타치는 사진가">
+            </div>
+            <figcaption class="mobile-3-last">
               <strong>기타치는 사진가</strong><br>
               글과 사진이 만나 좀 더 넓고 재미난 세상 이야기를 만들어 나가고 싶습니다.
             </figcaption>
@@ -138,19 +200,21 @@
     <section class="map">
       <!-- 마지막에 지도 화면 추가 -->
       <div class="map__content">
+        <img src="images/area.png" alt="bucheon map">
+        <i class="fa fa-map-marker" aria-hidden="true"></i>
       </div>
     </section>
     <!-- map end -->
     <!-- qna start -->
     <section class="qna">
-      <h2>작가 문의 하기</h2>
-      <form class="" action="#" method="post">
-        <fieldset>
+      <h2 class="qna__heading">작가 문의 하기</h2>
+      <form class="qna__form" action="#" method="post">
+        <fieldset class="grid">
           <legend>qna form</legend>
-          <input type="text" name="" value="" placeholder="Your Name">
-          <input type="email" name="" value="" placeholder="Your Email">
-          <textarea name="name" rows="8" cols="80" placeholder="Your Message"></textarea>
-          <button name="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>메세지 전송</button>
+          <input class="mobile-4-last" type="text" name="name" placeholder="Your Name">
+          <input class="mobile-4-last" type="email" name="email" placeholder="Your Email">
+          <textarea class="mobile-4-last" name="message" rows="8" cols="80" placeholder="Your Message"></textarea>
+          <button class="mobile-4-last" name="button"><i class="fa fa-paper-plane" aria-hidden="true"></i> 메세지 전송</button>
         </fieldset>
       </form>
     </section>
@@ -158,9 +222,10 @@
   </main>
   <!-- main end -->
   <!-- footer start -->
-  <footer>
-    <small>Copyright <i class="fa fa-copyright" aria-hidden="true"></i>  2016 Inyoung.</small>
+  <footer class="footer">
+    <small class="footer__copyright">Copyright <i class="fa fa-copyright" aria-hidden="true"></i>  2016 Inyoung.</small>
   </footer>
   <!-- footer end -->
+  </div>
 </body>
 </html>

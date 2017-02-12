@@ -1,0 +1,56 @@
+
+.carousel
+  position: relative
+  margin-top: $grid-height * 2
+  &__heading
+    @extend %hidden
+
+.carousel-figure
+  height: $grid-height * 12
+  &__heading
+    @extend %hidden
+  &__img
+    position: relative
+    width: auto
+    height: 100%
+    background: #f8d2c5
+    opacity: 0.4
+    & i
+      position: absolute
+      top: 50%
+      left: 50%
+      font-size: 60px
+      color: #fff
+      transform: translate(-50%, -50%)
+  & figcaption
+    position: absolute
+    top: $grid-height
+    right: 0
+    margin-right: 6.25%
+    line-height: 1.5
+    color: $theme-pink-color
+    & strong
+      color: #fff
+
+.carousel__page-link
+  display: none
+  & a
+    display: inline-block
+    width: 15px
+    height: 15px
+    border-radius: 8px
+    background: $theme-pink-color
+    text-indent: -9999em
+    &.is-active
+      background: #fff
+
+.carousel__direction-link
+  &--prev,
+  &--next
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+  &--prev
+    left: 6.25%
+  &--next
+    right: 6.25%

@@ -1,0 +1,25 @@
+// 색 조절. (밝게)
+@function tint($color, $amount)
+  @return mix(#fff, $color, $amount)
+
+// 색 조절. (어둡게)
+@function shade($color, $amount)
+  @return mix(#000, $color, $amount)
+
+// 단위 제거.
+@function de-unit($unit)
+  @return $unit / ($unit * 0 + 1)
+
+// px to em
+@function em($px, $base: 16px)
+  @return (de-unit($px) / de-unit($base)) * 1em
+
+@function get-width($type, $count, $is-last: false, $gutter: 20px)
+  $device-width: map-get($total-width-map, $type)
+  $total-width: map-get($gride-width-map, $type) * $count
+  $total-gutter: $gutter * $count
+
+  @if $is-last
+    $total-gutter: $total-gutter - $gutter
+
+  @return percentage(($total-width + $total-gutter) / $device-width)

@@ -1,0 +1,55 @@
+/*
+ * header layout */
+
+.header
+  position: relative
+  padding: 24px 6.25%
+  background: #4d4b4a
+
+.header-logo a
+  display: inline-block
+  height: 48px
+  font-size: 24px
+  text-transform: uppercase
+  color: $theme-pink-color
+  & i
+    font-size: 36px
+    line-height: 1.25
+
+.header--button
+  text-align: right
+  & button
+    height: 48px
+    padding: 0 10px
+    border: 1px solid transparent
+    &:hover
+      border-color: $theme-pink-color
+  & i
+    font-size: 36px
+    color: $theme-pink-color
+
+.header--gnb
+  display: none
+  position: absolute
+  top: ($grid-height * 4)
+  left: 0
+  z-index: 10
+  text-align: center
+  text-transform: uppercase
+  box-sizing: content-box
+  background: #413e3d
+
+  & h2
+    @extend %hidden
+      
+  & a
+    display: block
+    height: $grid-height
+    padding: $grid-height 0
+    border-bottom: 1px solid #4d4b4a
+    line-height: 1.5
+    letter-spacing: 1.6px
+    color: #fff
+    &:hover
+      background: #4d4b4a
+      color: $theme-pink-color
