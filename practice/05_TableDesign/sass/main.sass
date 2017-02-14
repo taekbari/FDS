@@ -1,0 +1,51 @@
+
+body
+  margin: 0 auto
+  font-family: 'YouandiModernTR', sans-serif
+  line-height: 1.5
+
+img
+  width: 100%
+  min-width: 820px
+
+ul
+  padding: 0
+  margin: 0
+  list-style: none
+  
+%hidden
+  position: absolute
+  top: 0
+  left: -9999em
+
+.main-table
+  width: 100%
+  margin: 100px 0
+  border-collapse: collapse
+
+  & th, td
+    padding: 25px 30px
+
+  & th
+    text-align: left
+
+  & tr:first-child
+    border-top: 2px solid #000
+
+  & th:first-child, th:nth-child(2), th:nth-child(3), th:nth-child(4),
+  & td:nth-child(2), td:nth-child(3)
+    border-right: 1px solid #eee
+
+  & tr, td, th
+    border-bottom: 1px solid #eee
+
+  & tr
+    & td:last-child, th:last-child
+      border-right: none
+
+  & caption
+    @extend %hidden
+
+  & a
+    text-decoration: none
+    color: rgb(84, 154, 218)
