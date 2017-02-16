@@ -1,0 +1,56 @@
+@import 'reset'
+@import 'values'
+
+%flex-align-center
+  display: flex
+  justify-content: center
+  align-items: center
+
+// splite image 처리.
+@for $i from 1 through length($card-list)
+  $row: ceil(($i / 5))
+  $x-position: -($img-width * (($i - 1) % 5)) - ($img-gap * (($i - 1) % 5))
+  $y-position: -($img-height * ($row - 1)) - ($img-height-gap * ($row - 1))
+
+  @if (($i - 1) % 5) >= 3
+    $x-position: $x-position - 1
+
+  // 4, 5번째 이미지 포지션 -1만큼 옮겨줌. (이미지 짤리는 부분 방지.)
+  .card-#{nth($card-list, $i)}
+    background-position: $x-position $y-position
+
+.card-block
+  @extend %flex-align-center
+  flex-wrap: wrap
+  width: 500px
+  border-radius: 10px
+  margin: 50px auto
+  background: #fff
+
+.card
+  position: relative
+  flex: 0 0 $img-width
+  height: $img-height
+  margin: 20px 5px
+  transform-style: preserve-3d
+  transform-origin: center top
+  transform: perspective(450px) rotateX(0deg)
+  transition: transform 1s
+
+.flip-card__front,
+.flip-card__back
+  @extend %flex-align-center
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  backface-visibility: hidden
+  background-image: url('../images/card-image.jpg')
+  background-repeat: no-repeat
+
+.flip-card__front
+  background-position: -409px -268px
+
+.flip-card__back
+  transform: rotateX(180deg)
