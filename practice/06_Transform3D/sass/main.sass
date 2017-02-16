@@ -6,7 +6,7 @@
   justify-content: center
   align-items: center
 
-// splite image 처리.
+// sprite image 처리.
 @for $i from 1 through length($card-list)
   $row: ceil(($i / 5))
   $x-position: -($img-width * (($i - 1) % 5)) - ($img-gap * (($i - 1) % 5))
