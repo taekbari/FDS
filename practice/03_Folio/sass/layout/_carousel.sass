@@ -1,0 +1,89 @@
+/*
+ * carousel style */
+
+.carousel
+  display: flex
+  position: relative
+  width: 100%
+  height: auto
+  overflow: hidden
+
+.carousel h2
+  @extend %hidden
+
+.carousel section
+  position: relative
+  flex: 1 0 100%
+  background-color: #222324
+
+.carousel figure
+  position: relative
+  height: 800px
+  +media-tablet()
+    height: 680px
+  +media-desktop()
+    height: 980px
+  width: 100%
+  overflow: hidden
+  & > img
+    +element-align-center('row')
+    position: absolute
+    width: auto
+    height: 100%
+
+  & h3
+    +media-mobile()
+      +element-align-center()
+    position: absolute
+    top: 20%
+    +media-desktop()
+      top: 30%
+    width: 100%
+    z-index: 2
+
+    & a
+      display: inline-block
+      margin: 0 11.7333333333%
+      font-size: 68px
+      +media-tablet
+        margin: 0 9.9609375%
+        font-size: 60px
+      font-weight: normal
+      transition: transform 0.5s
+
+      &:hover
+        transform: scale(1.05)
+
+      & img
+        position: relative
+        top: -10px
+        left: 20px
+
+.carousel__link
+  +flex-align-center()
+  position: absolute
+  top: 75%
+  left: 0
+  width: 100%
+  padding: 0 11.7333333333%
+  +media-tablet
+    padding: 0 9.9609375%
+  & a
+    flex: 0 0 33.3333333%
+    padding-top: 25px
+    border-top: 2px solid #fff
+    transition: all 0.3s
+    &:hover
+      border-color: #43f3d0
+      color: #43f3d0
+
+  & .carousel__link-title
+    font-family: 'AileronBold'
+  & .carousel__link-sub-title
+    font-size: 14px
+    font-family: 'AileronLight'
+
+    &.is-select
+      border-color: #000
+  +media-mobile()
+    display: none

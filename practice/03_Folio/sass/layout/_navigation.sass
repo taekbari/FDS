@@ -1,0 +1,69 @@
+/*
+ * navigation style */
+
+.header__gnb
+  +flex-align-center()
+  width: auto
+  +media-mobile()
+    width: 11.7333333333%
+  +media-tablet()
+    padding-right: 9.9609375%
+  +media-desktop()
+    padding-right: 8.3333333333%
+
+  & button
+    height: 88px
+    background: transparent
+    display: none
+
+    +media-mobile()
+      display: block
+      cursor: pointer
+
+  &-list
+    /* mobile */
+    +media-mobile()
+      position: absolute
+      top: 88px
+      left: 0
+      width: 100%
+      display: none
+      transform: translateY(-120%)
+      transition: all 1s
+
+      &.is-menu-active
+        transform: translateY(0%)
+        display: block
+        z-index: 10
+
+    +media-mobile()
+      &.is-menu-active a
+        padding: 50px 0
+        font-size: 28px
+        font-weight: 300
+        color: #18191a
+
+    & ul
+      display: flex
+      +media-mobile()
+        flex-direction: column
+
+    & li
+      text-align: center
+      display: inline-block
+      background: transparent
+      width: 100%
+
+      +media-mobile()
+        display: block
+        background: #fff
+
+    & a
+      padding: 10px 25px
+      display: inline-block
+      width: 100%
+      font-size: 18px
+      font-family: 'AileronLight'
+      transition: color 0.3s
+      &:hover
+        color: #43f3d0

@@ -1,0 +1,55 @@
+/*
+ * header */
+
+body
+  font-family: 'AileronRegular', sans-serif
+  line-height: 1.2
+
+header
+  position: relative
+
+  & a
+    font-size: 16px
+    color: #fff
+
+.header--fix
+  display: flex
+  justify-content: space-between
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  z-index: 10
+
+  +media-mobile()
+    height: 88px
+  +media-tablet()
+    height: 86px
+  +media-desktop()
+    height: 110px
+  /*
+   * 버튼 클릭 -> 메뉴 활성화.
+   * 모바일에서 사용 */
+  &.is-menu-active
+    background: #fff
+
+.header__heading
+  +flex-align-center()
+  +media-mobile()
+    width: 11.7333333333%
+  +media-tablet()
+    width: 9.9609375%
+  +media-desktop()
+    width: 8.3333333333%
+
+  & a
+    +flex-align-center()
+    +media-desktop()
+      height: 110px
+
+  & strong
+    display: none
+    +media-desktop()
+      display: inline-block
+      position: absolute
+      left: 8.3333333333%
