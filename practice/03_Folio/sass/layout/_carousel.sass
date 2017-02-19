@@ -13,8 +13,10 @@
 
 .carousel section
   position: relative
+  left: 0%
   flex: 1 0 100%
   background-color: #222324
+  transition: left 2s
 
 .carousel figure
   position: relative
@@ -73,6 +75,7 @@
     padding-top: 25px
     border-top: 2px solid #fff
     transition: all 0.3s
+    &.is-select,
     &:hover
       border-color: #43f3d0
       color: #43f3d0
