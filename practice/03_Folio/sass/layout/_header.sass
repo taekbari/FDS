@@ -24,8 +24,12 @@ header
   +media-mobile()
     height: 88px
   +media-tablet()
+    &.is-scroll
+      background: #fff
     height: 86px
   +media-desktop()
+    &.is-scroll
+      background: #fff
     height: 110px
   /*
    * 버튼 클릭 -> 메뉴 활성화.
@@ -47,6 +51,9 @@ header
     +media-desktop()
       height: 110px
 
+  &.is-scroll
+    & strong
+      color: #222324
   & strong
     display: none
     +media-desktop()

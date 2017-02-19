@@ -57,6 +57,31 @@ var toggleMobileMenu = function() {
 menu_btn.onclick = toggleMobileMenu;
 
 /*
+ * scroll event
+ */
+window.addEventListener('scroll', function(e) {
+  var device_width = window.innerWidth;
+  var header_fix = document.querySelector('.header--fix');
+  var gnb_list = header_fix.querySelector('.header__gnb-list');
+  var heading = header_fix.querySelector('.header__heading');
+  var logo_img = heading.querySelector('img');
+
+  if (window.scrollY === 0) {
+    removeClass(header_fix, 'is-scroll');
+    removeClass(gnb_list, 'is-scroll');
+    removeClass(heading, 'is-scroll');
+    logo_img.setAttribute('src', 'images/Logo.png');
+  }
+  else {
+    addClass(header_fix, 'is-scroll');
+    addClass(gnb_list, 'is-scroll');
+    addClass(heading, 'is-scroll');
+    if (device_width > 750) {
+      logo_img.setAttribute('src', 'images/Logo-clicked.png');
+    }
+  }
+});
+/*
  * carousel 이미지 로테이션 처리.
  * link event 설정.
  */

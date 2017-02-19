@@ -42,7 +42,13 @@
         font-size: 28px
         font-weight: 300
         color: #18191a
-
+    &.is-scroll
+      +media-tablet()
+        & a
+          color: #222324
+      +media-desktop()
+        & a
+          color: #222324
     & ul
       display: flex
       +media-mobile()
@@ -65,5 +71,6 @@
       font-size: 18px
       font-family: 'AileronLight'
       transition: color 0.3s
+
       &:hover
         color: #43f3d0
