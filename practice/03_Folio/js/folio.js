@@ -79,6 +79,9 @@ window.addEventListener('scroll', function(e) {
     if (device_width > 750) {
       logo_img.setAttribute('src', 'images/Logo-clicked.png');
     }
+    else {
+      logo_img.setAttribute('src', 'images/Logo.png');
+    }
   }
 });
 /*

@@ -1,0 +1,50 @@
+/*
+ * image list style */
+
+.image-list
+  position: relative
+  background: $default-bg-color
+
+  &::after
+    @extend %clearfix
+
+  & li:nth-child(5),
+  & li:nth-child(7)
+      display: none
+      +media-desktop()
+        display: block
+        position: absolute
+        bottom: 0
+  & li:nth-child(5)
+      +media-desktop()
+        left: 0
+  & li:nth-child(7)
+      +media-desktop()
+        left: 50%
+
+  & li:nth-child(1),
+  & li:nth-child(3),
+  & li:nth-child(4)
+      float: left
+  & li:nth-child(2),
+  & li:nth-child(6),
+  & li:nth-child(8)
+      float: right
+      +media-desktop()
+        float: left
+  & li:nth-child(6),
+  & li:nth-child(8)
+      +media-desktop()
+        margin-left: 25%
+
+  & li
+    width: 50%
+    +media-desktop()
+      width: 25%
+
+  & a
+    display: block
+  & img
+    display: block
+    width: 100%
+    height: auto

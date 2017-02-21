@@ -10,3 +10,12 @@
   top: 0;
   left: -999999em;
 }
+
+/*
+ * clearfix
+ */
+%clearfix {
+  display: block;
+  content: '';
+  clear: both;
+}
