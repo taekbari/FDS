@@ -1,0 +1,132 @@
+/*
+ * footer style */
+
+footer address
+  color: #fff
+
+footer::after
+  display: block
+  content: ''
+  clear: both
+
+footer
+  margin-top: 50px
+  & [class*="__heading"]
+    flex: 0 1 22.3832752613%
+    font-size: 22px
+    +media-tablet()
+      flex-basis: 17.578125%
+      font-size: 18px
+    +media-desktop()
+      flex-basis: 21%
+      font-size: 18px
+    font-weight: 600
+    color: #fff
+  & [class*="__address"],
+  .social-section__sns-list
+    flex: 0 1 77.6167247387%
+    margin-left: 5%
+    font-size: 22px
+    +media-tablet()
+      font-size: 18px
+    +media-desktop()
+      flex-basis: 79%
+      font-size: 18px
+      margin-left: 15%
+    font-weight: 600
+    color: #3c3c3c
+  & [class*="__address"]
+    font-style: normal
+    +media-tablet()
+      flex-basis: 82.421875%
+      margin-left: 24%
+
+  .social-section__heading
+    +media-tablet()
+      flex-basis: 8.7890625%
+  .social-section__sns-list
+    +media-tablet()
+      flex-basis: 91.2109375%
+      margin-left: 12%
+  & a
+    color: #3c3c3c
+    transition: color 0.3s
+
+.footer-logo
+  float: left
+  width: 11.7333333333%
+  +media-tablet()
+    width: 9.9609375%
+  +media-desktop()
+    width: 8.3333333333%
+  text-align: center
+  & img
+    height: auto
+
+.footer-section
+  display: flex
+  flex-wrap: wrap
+  margin-right: 11.7333333333%
+  +media-tablet()
+    margin-right: 9.9609375%
+  +media-desktop()
+    margin-right: 8.3333333333%
+  & > *
+    flex: 1 0 100%
+
+.contact-section,
+.office-section,
+.social-section
+  display: flex
+  margin-bottom: 70px
+  +media-desktop()
+    flex-basis: 33.333333%
+
+.contact-section,
+.office-section
+  +media-tablet()
+    flex-basis: 50%
+
+.contact-section__address
+  display: flex
+  +media-tablet()
+    flex-wrap: wrap
+  +media-desktop()
+    flex-wrap: wrap
+  & a
+    flex-basis: 50%
+    +media-tablet()
+      flex-basis: 100%
+    +media-desktop()
+      flex-basis: 100%
+    word-break: break-all
+    &:hover
+      color: $default-hover-color
+  & a:last-of-type
+    +media-mobile()
+      text-align: center
+    +media-tablet()
+      margin-top: 20px
+
+.social-section__sns-list
+  display: flex
+  flex-wrap: wrap
+  +media-tablet
+    flex-wrap: nowrap
+  & li
+    flex: 0 1 50%
+    margin-bottom: 20px
+    +media-tablet()
+      flex-basis: 20%
+  &--behance a
+    &:hover
+      color: #005cff
+  &--dribbble a
+    &:hover
+      color: #e35087
+  &--twitter a
+    &:hover
+      color: #55acee
+  &--instagram a
+    &:hover
+      color: #305f84

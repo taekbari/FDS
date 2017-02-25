@@ -1,0 +1,182 @@
+/*
+ * section style */
+
+body
+  background: $default-bg-color
+
+.twitter-section
+  display: flex
+  border-bottom: 2px solid #171717
+  +media-mobile()
+    margin: 50px 11.7333333333% 0
+  +media-tablet()
+    margin: 70px 9.9609375% 0
+  +media-desktop()
+    margin: 70px 8.3333333333% 0
+  &__heading
+    flex-basis: 22.3832752613%
+    font-size: 22px
+    font-weight: 600
+    color: #fff
+    +media-tablet()
+      flex-basis: 8.7890625%
+      font-size: 18px
+    +media-desktop()
+      flex-basis: 7%
+      font-size: 18px
+  &__container
+    display: flex
+    +media-mobile()
+      flex-wrap: wrap
+    flex-basis: 77.6167247387%
+    & .twitter-section__article:last-of-type
+      display: none
+      +media-desktop()
+        display: block
+    +media-tablet()
+      flex-basis: 91.2109375%
+    +media-desktop()
+      flex-basis: 93%
+
+  &__article
+    flex: 0 0 95%
+    margin-left: 5%
+    margin-bottom: 50px
+    +media-tablet()
+      flex: 0 1 50%
+      margin-left: 12%
+      margin-bottom: 70px
+    +media-desktop()
+      flex: 0 1 31.6666666667%
+      margin-left: 5%
+    &-heading
+      @extend %hidden
+    &-content,
+    &-time
+      width: 100%
+    &-content
+      word-break: break-all
+      font-size: 22px
+      +media-tablet()
+        font-size: 18px
+      +media-desktop()
+        font-size: 18px
+      color: #fff
+      & a
+        color: #55acee
+    &-time
+      display: block
+      margin-top: 20px
+      font-size: 20px
+      font-weight: 600
+      color: #3c3c3c
+      +media-tablet()
+        font-size: 14px
+      +media-desktop()
+        font-size: 14px
+
+.news-section
+  display: flex
+  border-bottom: 2px solid #55acee
+  +media-mobile()
+    margin: 50px 11.7333333333% 0
+  +media-tablet()
+    margin: 70px 9.9609375% 0
+  +media-desktop()
+    margin: 70px 8.3333333333% 0
+  &__heading
+    flex-basis: 22.3832752613%
+    font-size: 22px
+    font-weight: 600
+    color: #fff
+    +media-tablet()
+      flex-basis: 8.7890625%
+      font-size: 18px
+    +media-desktop()
+      flex-basis: 7%
+      font-size: 18px
+  &__container
+    display: flex
+    flex-basis: 77.6167247387%
+    overflow: hidden
+    +media-tablet()
+      flex-basis: 91.2109375%
+    +media-desktop()
+      flex-basis: 93%
+
+  &__article
+    position: relative
+    flex: 0 0 95%
+    margin-left: 5%
+    margin-bottom: 50px
+    +media-tablet()
+      flex-basis: 83%
+      margin-left: 12%
+      margin-bottom: 70px
+    +media-desktop()
+      flex-basis: 45%
+      margin-left: 5%
+      margin-bottom: 50px
+
+    &-heading
+      @extend %hidden
+    &-content,
+    &-time
+      float: left
+      width: 90%
+      padding-right: 10px
+    &-content
+      font-size: 32px
+      +media-tablet()
+        font-size: 26px
+      +media-desktop()
+        font-size: 26px
+      color: #fff
+    &-time
+      margin-top: 20px
+      font-size: 20px
+      +media-tablet()
+        font-size: 14px
+      +media-desktop()
+        font-size: 14px
+      font-weight: 600
+      color: #3c3c3c
+      transition: color 0.5s
+    & img
+      +element-align-center('column')
+      position: absolute
+      width: 10%
+      transition: opacity 0.5s
+    &:hover
+      & .news-section__article-img
+        opacity: 0
+      & .news-section__article-img--mobile-hover
+        opacity: 1
+        +media-tablet()
+          opacity: 0
+        +media-desktop()
+          opacity: 0
+      & .news-section__article-img--hover
+        +media-mobile()
+          opacity: 0
+        +media-tablet()
+          opacity: 1
+        +media-desktop()
+          opacity: 1
+      & .news-section__article-time
+        +media-tablet()
+          color: #636363
+        +media-desktop()
+          color: #636363
+    &-img
+      opacity: 1
+      +media-tablet()
+        opacity: 0
+    &-img--mobile-hover
+      opacity: 0
+      +media-tablet()
+        opacity: 1
+      +media-desktop()
+        opacity: 1
+    &-img--hover
+      opacity: 0

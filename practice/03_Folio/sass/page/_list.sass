@@ -10,32 +10,53 @@
 
   & li:nth-child(5),
   & li:nth-child(7)
-      display: none
-      +media-desktop()
-        display: block
-        position: absolute
-        bottom: 0
+    display: none
+    +media-desktop()
+      display: block
+      position: absolute
+      bottom: 0
   & li:nth-child(5)
-      +media-desktop()
-        left: 0
+    +media-desktop()
+      left: 0
   & li:nth-child(7)
-      +media-desktop()
-        left: 50%
+    +media-desktop()
+      left: 50%
 
   & li:nth-child(1),
   & li:nth-child(3),
   & li:nth-child(4)
-      float: left
+    float: left
   & li:nth-child(2),
   & li:nth-child(6),
   & li:nth-child(8)
-      float: right
-      +media-desktop()
-        float: left
+    float: right
+    +media-desktop()
+      float: left
   & li:nth-child(6),
   & li:nth-child(8)
-      +media-desktop()
-        margin-left: 25%
+    +media-desktop()
+      margin-left: 25%
+
+  & li:nth-child(3)
+    position: relative
+    
+    &:hover
+      & a::after
+        opacity: 1
+      & span
+        opacity: 1
+        z-index: 1
+
+    & a::after
+      position: absolute
+      top: 0
+      left: 0
+      content: ''
+      width: 100%
+      height: 100%
+      opacity: 0
+      background: rgba(0, 0, 0, 0.5)
+      transition: opacity 0.5s
 
   & li
     width: 50%
@@ -44,7 +65,21 @@
 
   & a
     display: block
-  & img
-    display: block
-    width: 100%
-    height: auto
+    & > img
+      display: block
+      width: 100%
+      height: auto
+    & span
+      +element-align-center()
+      position: absolute
+      width: 80%
+      text-align: center
+      font-size: 26px
+      +media-mobile()
+        font-size: 36px
+      color: #fff
+      opacity: 0
+      transition: opacity 0.5s
+      & img
+        display: inline-block
+        margin-top: 20px
