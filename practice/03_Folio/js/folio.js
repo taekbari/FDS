@@ -39,21 +39,25 @@ var menu_btn = document.querySelector('.header__gnb > button');
 
 var toggleMobileMenu = function() {
   var header_fix = document.querySelector('.header--fix');
-  var gnb_list = document.querySelector('.header__gnb-list');
-  var logo_img = header_fix.querySelector('.header__heading img');
-  var menu_img = document.querySelector('.header__gnb img');
+  var header_heading = header_fix.querySelector('.header__heading');
+  var header_gnb = header_fix.querySelector('.header__gnb');
+  var gnb_list = header_gnb.querySelector('.header__gnb-list');
 
   toggleClass(header_fix, 'is-menu-active');
+  toggleClass(header_heading, 'is-menu-active');
+  toggleClass(header_gnb, 'is-menu-active');
   toggleClass(gnb_list, 'is-menu-active');
-  if (hasClass(header_fix, 'is-menu-active')) {
-    logo_img.setAttribute('src', 'images/Logo-clicked.png');
-    menu_img.setAttribute('src', 'images/Menu-clicked.png');
-  }
-  else {
-    logo_img.setAttribute('src', 'images/Logo.png');
-    menu_img.setAttribute('src', 'images/Menu.png');
-  }
+  console.log('click menu');
+  // if (hasClass(header_fix, 'is-menu-active')) {
+  //   logo_img.setAttribute('src', 'images/Logo-clicked.png');
+  //   menu_img.setAttribute('src', 'images/Menu-clicked.png');
+  // }
+  // else {
+  //   logo_img.setAttribute('src', 'images/Logo.png');
+  //   menu_img.setAttribute('src', 'images/Menu.png');
+  // }
 };
+console.log(menu_btn);
 menu_btn.onclick = toggleMobileMenu;
 
 /*
@@ -70,17 +74,16 @@ window.addEventListener('scroll', function(e) {
     removeClass(header_fix, 'is-scroll');
     removeClass(gnb_list, 'is-scroll');
     removeClass(heading, 'is-scroll');
-    logo_img.setAttribute('src', 'images/Logo.png');
+    // logo_img.setAttribute('src', 'images/Logo.png');
   }
   else {
     addClass(header_fix, 'is-scroll');
     addClass(gnb_list, 'is-scroll');
     addClass(heading, 'is-scroll');
-    if (device_width > 750) {
-      logo_img.setAttribute('src', 'images/Logo-clicked.png');
-    }
-    else {
-      logo_img.setAttribute('src', 'images/Logo.png');
+    if (device_width <= 750) {
+      // removeClass(header_fix, 'is-scroll');
+      // removeClass(gnb_list, 'is-scroll');
+      // removeClass(heading, 'is-scroll');
     }
   }
 });

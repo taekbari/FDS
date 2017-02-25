@@ -100,7 +100,8 @@ footer
     +media-desktop()
       flex-basis: 100%
     word-break: break-all
-    &:hover
+    &:hover,
+    &:focus
       color: $default-hover-color
   & a:last-of-type
     +media-mobile()
@@ -119,14 +120,18 @@ footer
     +media-tablet()
       flex-basis: 20%
   &--behance a
-    &:hover
+    &:hover,
+    &:focus
       color: #005cff
   &--dribbble a
-    &:hover
+    &:hover,
+    &:focus
       color: #e35087
   &--twitter a
-    &:hover
+    &:hover,
+    &:focus
       color: #55acee
   &--instagram a
-    &:hover
+    &:hover,
+    &:focus
       color: #305f84

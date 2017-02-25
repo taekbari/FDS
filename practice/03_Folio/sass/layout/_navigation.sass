@@ -11,44 +11,63 @@
   +media-desktop()
     padding-right: 8.3333333333%
 
+  &.is-menu-active
+    & .header__gnb-img
+      opacity: 0
+      transform: translate(-50%, -50%) rotate(-90deg)
+    & .header__gnb-img--clicked
+      opacity: 1
+      transform: translate(-50%, -50%) rotate(0deg)
   & button
+    display: none
+    position: relative
+    width: 100%
     height: 88px
     background: transparent
-    display: none
 
     +media-mobile()
       display: block
       cursor: pointer
+      z-index: 10
+    & img
+      position: absolute
+      top: 50%
+      left: 50%
+
+    .header__gnb-img
+      opacity: 1
+      transform: translate(-50%, -50%) rotate(0deg)
+      transition: all 0.5s
+    .header__gnb-img--clicked
+      opacity: 0
+      transform: translate(-50%, -50%) rotate(90deg)
+      transition: all 0.5s
 
   &-list
     /* mobile */
     +media-mobile()
       position: absolute
-      top: 88px
+      top: 0
       left: 0
       width: 100%
-      display: none
-      transform: translateY(-120%)
+      padding-top: 88px
+      opacity: 0
+      background: #fff
+      transform: translateY(-100%)
       transition: all 1s
 
       &.is-menu-active
         transform: translateY(0%)
-        display: block
-        z-index: 10
+        opacity: 1
+        z-index: 9
 
-    +media-mobile()
-      &.is-menu-active a
-        padding: 50px 0
-        font-size: 28px
-        font-weight: 300
-        color: #18191a
     &.is-scroll
       +media-tablet()
         & a
-          color: #222324
+          color: $scroll-text-color
       +media-desktop()
         & a
-          color: #222324
+          color: $scroll-text-color
     & ul
       display: flex
       +media-mobile()
@@ -62,7 +81,6 @@
 
       +media-mobile()
         display: block
-        background: #fff
 
     & a
       padding: 10px 25px
@@ -71,6 +89,12 @@
       font-size: 18px
       font-family: 'AileronLight'
       transition: color 0.3s
+      +media-mobile()
+        padding: 50px 0
+        font-size: 28px
+        font-weight: 300
+        color: #18191a
 
-      &:hover
+      &:hover,
+      &:focus
         color: $default-hover-color
