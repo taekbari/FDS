@@ -1,3 +1,6 @@
+/*
+ * navigation style */
+
 .header__gnb
   +flex-align-center()
   width: auto
@@ -41,8 +44,7 @@
       transition: all 0.5s
 
   &-list
-    & h2
-      @extend %hidden
+    /* mobile */
     +media-mobile()
       position: absolute
       top: 0

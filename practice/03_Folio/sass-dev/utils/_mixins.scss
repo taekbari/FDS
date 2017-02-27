@@ -1,3 +1,10 @@
+/*
+ * classes & placeholder
+ */
+
+/*
+ * flex align center (both)
+ */
 @mixin flex-align-center ($direction: null) {
   display: flex;
   @if $direction == 'row' {
@@ -12,6 +19,9 @@
   }
 }
 
+/*
+ * position align center (both)
+ */
 @mixin element-align-center ($direction: null) {
   @if $direction == 'row' {
     left: 50%;
@@ -28,6 +38,11 @@
   }
 }
 
+/*
+ * media query
+ * mobile width : 760px
+ * table width : < 760px && >= 1024px
+ */
 $mobile-query  : 'screen and (max-width: 750px)';
 $tablet-query  : 'screen and (min-width: 751px) and (max-width: 1024px)';
 $desktop-query : 'screen and (min-width: 1025px)';

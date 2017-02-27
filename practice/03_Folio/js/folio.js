@@ -31,6 +31,7 @@ var getChildIndex = function(parent, element) {
     }
   }
 };
+
 /*
  * mobile menu 버튼 클릭시 is-menu-active 클래스 추가.
  * logo & menu 이미지 변경
@@ -47,17 +48,7 @@ var toggleMobileMenu = function() {
   toggleClass(header_heading, 'is-menu-active');
   toggleClass(header_gnb, 'is-menu-active');
   toggleClass(gnb_list, 'is-menu-active');
-  console.log('click menu');
-  // if (hasClass(header_fix, 'is-menu-active')) {
-  //   logo_img.setAttribute('src', 'images/Logo-clicked.png');
-  //   menu_img.setAttribute('src', 'images/Menu-clicked.png');
-  // }
-  // else {
-  //   logo_img.setAttribute('src', 'images/Logo.png');
-  //   menu_img.setAttribute('src', 'images/Menu.png');
-  // }
 };
-console.log(menu_btn);
 menu_btn.onclick = toggleMobileMenu;
 
 /*
@@ -74,19 +65,14 @@ window.addEventListener('scroll', function(e) {
     removeClass(header_fix, 'is-scroll');
     removeClass(gnb_list, 'is-scroll');
     removeClass(heading, 'is-scroll');
-    // logo_img.setAttribute('src', 'images/Logo.png');
   }
   else {
     addClass(header_fix, 'is-scroll');
     addClass(gnb_list, 'is-scroll');
     addClass(heading, 'is-scroll');
-    if (device_width <= 750) {
-      // removeClass(header_fix, 'is-scroll');
-      // removeClass(gnb_list, 'is-scroll');
-      // removeClass(heading, 'is-scroll');
-    }
   }
 });
+
 /*
  * carousel 이미지 로테이션 처리.
  * link event 설정.

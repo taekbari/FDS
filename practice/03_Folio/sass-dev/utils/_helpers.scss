@@ -1,9 +1,19 @@
+/*
+ * classes & placeholder
+ */
+
+/*
+ * hidden
+ */
 %hidden {
   position: absolute;
   top: 0;
   left: -999999em;
 }
 
+/*
+ * clearfix
+ */
 %clearfix {
   display: block;
   content: '';
