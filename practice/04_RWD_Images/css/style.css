@@ -1,0 +1,84 @@
+@charset "UTF-8";
+
+body, figure, h1{
+  margin: 0;
+}
+
+body {
+  background: #eee;
+}
+
+.rwd-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.rwd-container figure {
+  position: relative;
+  flex: 0 1 25%;
+  padding-top: 25%;
+  overflow: hidden;
+}
+
+.rwd-container figure h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 26px;
+  font-weight: 100;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.5s ease-in;
+}
+
+.rwd-container figure::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.5s ease-in;
+}
+
+.rwd-container figure:hover h1{
+  opacity: 1;
+}
+.rwd-container figure:hover::after {
+  opacity: 1;
+}
+
+.rwd-container figure img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 768px) {
+  .rwd-container {
+    width: 100%;
+    margin: 0;
+  }
+  .rwd-container figure {
+    flex-basis: 50%;
+    padding-top: 50%;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 959px) {
+  .rwd-container {
+    width: 90%;
+  }
+  .rwd-container figure {
+    flex-basis: 33.333333%;
+    padding-top: 33.333333%;
+  }
+}
