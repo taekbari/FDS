@@ -58,9 +58,14 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100%;
-  min-height: 100%;
+  width: auto;
+  height: 100%;
   transform: translate(-50%, -50%);
+}
+
+.rwd-container figure img.resize-height {
+  width: 100%;
+  height: auto;
 }
 
 @media screen and (max-width: 768px) {
