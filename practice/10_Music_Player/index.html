@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Music Player</title>
+  <link rel="stylesheet" href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+  <main>
+    <button type="button" class="music-list-btn"><i class="fa fa-list-ul" aria-hidden="true"></i></button>
+    <div class="music-play-container">
+      <div class="music-play">
+        <figure class="music-play__content">
+          <h2>Ed Sheeran - Shape Of You</h2>
+          <img class="music-play__content-img" src="./media/cover/001.EdSheeran-ShapeOfYou.jpg" alt="">
+          <figcaption>
+            <h3 class="music-play__content-title">Shape Of You</h3>
+            <p class="music-play__content-artist">Ed Sheeran</p>
+          </figcaption>
+        </figure>
+        <div class="music-play__control">
+          <div class="music-play__control-button">
+            <button type="button"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
+            <button type="button"><i class="fa fa-play" aria-hidden="true"></i></button>
+            <button type="button"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
+          </div>
+          <div class="music-play__control-seekbar">
+            <span class="music-play__control-seekbar__current-time">00:00</span>
+            <div class="music-play__control-seekbar__progress">
+            </div>
+            <span class="music-play__control-seekbar__total-time">03:00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div class="music-container">
+    <h2 class="music-container__heading">PlayList</h2>
+    <ul class="music-container__list">
+      <li>
+        <a href="#">
+          <figure class="music-container__list-item">
+            <h2>Ed Sheeran - Shape Of You</h2>
+            <img src="./media/cover/001.EdSheeran-ShapeOfYou.jpg" alt="">
+            <figcaption>
+              <h3 class="music-container__list-item__title">Shape Of You</h3>
+              <p class="music-container__list-item__artist">Ed Sheeran</p>
+            </figcaption>
+          </figure>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <figure class="music-container__list-item">
+            <h2>The Chainsmokers &amp; Halsey - Closer</h2>
+            <img src="./media/cover/002.TheChainsmokers&Halsey-Closer.jpg" alt="">
+            <figcaption>
+              <h3 class="music-container__list-item__title">Closer</h3>
+              <p class="music-container__list-item__artist">The Chainsmokers &amp; Halsey</p>
+            </figcaption>
+          </figure>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <figure class="music-container__list-item">
+            <h2>Zayn &amp; Taylor Swift - I Don't Wanna Live Forever (Fifty Shades Darker)</h2>
+            <img src="./media/cover/003.Zayn&TaylorSwift-IDon'tWannaLiveForever(FiftyShadesDarker).jpg" alt="">
+            <figcaption>
+              <h3 class="music-container__list-item__title">I Don't Wanna Live Forever (Fifty Shades Darker)</h3>
+              <p class="music-container__list-item__artist">Zayn &amp; Taylor Swift</p>
+            </figcaption>
+          </figure>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <figure class="music-container__list-item">
+            <h2>Katy Perry &amp; Skip Marley - Chained To The Rhythm</h2>
+            <img src="./media/cover/004.KatyPerry&SkipMarley-ChainedToTheRhythm.jpg" alt="">
+            <figcaption>
+              <h3 class="music-container__list-item__title">Chained To The Rhythm</h3>
+              <p class="music-container__list-item__artist">Katy Perry &amp; Skip Marley</p>
+            </figcaption>
+          </figure>
+        </a>
+      </li>
+    </ul>
+    <button class="music-container__close-btn" type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
+  </div>
+</body>
+</html>

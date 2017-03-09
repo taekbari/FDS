@@ -1,0 +1,115 @@
+main
+  position: relative
+  width: 100%
+  height: 100vh
+  background: rgba(#ddd, 0.4)
+
+  &.is-show
+    &::after
+      position: absolute
+      top: 0
+      left: 0
+      content: ''
+      width: 100%
+      height: 100%
+      background: rgba(0, 0, 0, 0.2)
+
+.music-list-btn
+  position: absolute
+  top: 20px
+  left: 20px
+  font-size: 2rem
+
+.music-play-container
+  display: flex
+  width: 100%
+  height: 100%
+  justify-content: center
+  align-items: center
+
+.music-play
+  background: rgba(#cadaf2, 0.54)
+  flex: 0 1 600px
+  border-radius: 8px
+  box-shadow: 0 0 2em rgba(0, 0, 0, 0.3)
+  padding: 10px
+
+  &__content
+    display: flex
+    align-items: center
+
+    & h2
+      @extend %hidden
+
+    &-img
+      display: block
+      width: 250px
+      height: 250px
+      border-radius: 8px
+      box-shadow: 0 0 1em rgba(0, 0, 0, 0.5)
+
+    & figcaption
+      margin-left: 20px
+
+    &-title
+      margin: 0
+      font-size: 3.5rem
+      color: #252120
+
+    &-artist
+      margin: 10px 0 0
+      font-size: 2rem
+      color: #655f5e
+
+  &__control
+    display: flex
+    margin-top: 30px
+    border-radius: 8px
+    align-items: center
+    background: #fff
+
+    &-button
+      display: flex
+      flex: 0 1 30%
+      justify-content: center
+
+      & button
+        flex: 0 1 33.33333%
+        height: 30px
+
+    &-seekbar
+      display: flex
+      flex: 0 1 70%
+      align-items: center
+      margin-left: 10px
+
+      &__current-time
+        flex: 0 1 10%
+        text-align: center
+
+      &__progress
+        position: relative
+        flex: 0 1 80%
+        height: 2px
+        margin: 0 5px
+        background: #eee
+
+        &::before
+          position: absolute
+          top: -4px
+          left: 10%
+          width: 10px
+          height: 10px
+          border-radius: 50%
+          content: ''
+          background: skyblue
+        &::after
+          position: absolute
+          width: 10%
+          height: 100%
+          content: ''
+          background: skyblue
+
+      &__total-time
+        flex: 0 1 10%
+        text-align: center
