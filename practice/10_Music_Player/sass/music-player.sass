@@ -47,7 +47,7 @@ button
     content: ''
     opacity: 0
     background: rgba(0, 0, 0, 0.3)
-    transition: opacity 1s ease-out
+    transition: all 1s ease-out
     z-index: -1
 
   &.is-music-select
@@ -92,12 +92,12 @@ button
       flex: 0 0 25%
       left: 0
       transition: left 0.3s
-
       & a
         display: block
         transform: scale(1)
         transition: all 0.5s
-      & a:hover
+      & a:hover,
+      &.is-active
         transform: scale(1.1)
 
     &__item
@@ -162,7 +162,7 @@ button
   transform-style: preserve-3d
   transform-origin: center center
   transform: translate(-50%, -50%) perspective(450px) rotateY(0deg)
-  transition: opacity 1s ease-out, transform 1s ease-out
+  transition: opacity 1s ease-out, z-index 1s ease-out, transform 1s ease-out
   z-index: -1
   &.is-music-select
     opacity: 1
@@ -299,7 +299,7 @@ button
         &--circle
           position: absolute
           top: 2.5px
-          left: 10%
+          left: 0
           width: 10px
           height: 10px
           border-radius: 50%
@@ -308,6 +308,6 @@ button
         &--bar
           position: absolute
           top: 6.5px
-          width: 10%
+          width: 0
           height: 2px
           background: skyblue

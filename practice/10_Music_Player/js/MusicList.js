@@ -29,7 +29,7 @@ var MusicList = (function(Handlebars){
       Array.prototype.forEach.call(music_list_anchors, function(item, index) {
         item.onclick = function(event) {
           event.preventDefault();
-          callback(_model.get(index));
+          callback(index);
         };
       });
     }

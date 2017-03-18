@@ -13,6 +13,7 @@
   <main class="player">
     <h1 class="player__heading">Playlists <span class="player__list-count">2</span></h1>
     <div class="player__container">
+      <!-- music list 생성을 위한 template 코드 영역 -->
       <script id="music-list-template" type="text/x-handlebars-template">
       <ul class="player__list">
         {{#items}}
@@ -31,11 +32,16 @@
         {{/items}}
       </ul>
       </script>
+      <!-- music list 생성을 위한 template 코드 영역 End -->
+      <!-- music list link 영역 -->
       <a class="player__link__prev" href="#">&lt;</a>
       <a class="player__link__next" href="#">&gt;</a>
+      <!-- music list link 영역 End -->
     </div>
-    <div class="music__player__container is-play">
+    <div class="music__player__container">
+    <!-- music plyaer 생성을 위한 template 코드 영역 -->
     <script id="music-player-template" type="text/x-handlebars-template">
+      <!-- music plyaer filp front 영역 -->
       <div class="music__player__flip-front">
         <figure class="music__player">
           <h2 class="music__player__heading">{{alt}}</h2>
@@ -48,6 +54,8 @@
         <button class="music__player__play-btn" type="button"><i class="fa fa-play-circle" aria-hidden="true"></i></button>
         <button class="music__player__close-btn" type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
       </div>
+      <!-- music plyaer filp front 영역 End -->
+      <!-- music plyaer filp back 영역 -->
       <div class="music__player__flip-back">
         <div class="music__player__img__container">
           <img class="music__player__img" src="{{cover}}" alt="{{alt}}">
@@ -58,25 +66,29 @@
           <button class="music__player__control__button__forward" type="button"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
         </div>
         <div class="music__player__control__seekbar">
-          <span class="music__player__control__seekbar__current-time">00:00</span>
+          <span class="music__player__control__seekbar__current-time"></span>
           <div class="music__player__control__seekbar__progress">
             <div class="music__player__control__seekbar__progress--bar"></div>
             <div class="music__player__control__seekbar__progress--circle"></div>
           </div>
-          <span class="music__player__control__seekbar__total-time">03:00</span>
+          <span class="music__player__control__seekbar__total-time"></span>
         </div>
+        <button class="music__player__close-btn" type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
       </div>
+      <!-- music plyaer filp back 영역 End -->
     </script>
+    <!-- music plyaer 생성을 위한 template 코드 영역 End -->
     </div>
   </main>
   <script src="./js/music-player.js"></script>
   <script src="./js/Model.js"></script>
+  <script src="./js/AudioCtrl.js"></script>
   <script src="./js/MusicList.js"></script>
   <script src="./js/MusicPlayer.js"></script>
   <script>
     var model = new Model(data);
     var music_list = new MusicList(model);
-    var music_player = new MusicPlayer();
+    var music_player = new MusicPlayer(model);
     var player_container = document.querySelector('.player__container');
     player_container.insertAdjacentHTML('afterbegin', music_list.make());
 
@@ -86,7 +98,6 @@
     var prev_link = player_container.querySelector('.player__link__prev');
     var next_link = player_container.querySelector('.player__link__next');
 
-    console.log(music_list_item);
     var total_item_count = model.size();
     var move_count = 0;
     var max_move_count = total_item_count - 4;
