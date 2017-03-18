@@ -1,0 +1,313 @@
+/**
+ * main 영역 */
+
+html
+  box-sizing: border-box
+  font-size: 10px
+
+*, *::before, *::after
+  box-sizing: inherit
+
+body, figure
+  margin: 0
+
+ul
+  padding: 0
+  margin: 0
+  list-style: none
+
+a
+  text-decoration: none
+
+button
+  padding: 0
+  border: 0
+  background: transparent
+  cursor: pointer
+
+%hidden
+  position: absolute
+  left: -9999em
+
+.player
+  display: flex
+  position: relative
+  height: 100vh
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%)
+
+  &::after
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    content: ''
+    opacity: 0
+    background: rgba(0, 0, 0, 0.3)
+    transition: opacity 1s ease-out
+    z-index: -1
+
+  &.is-music-select
+    &::after
+      opacity: 1
+      z-index: 10
+
+  &__heading
+    display: flex
+    align-items: center
+    position: relative
+    font-size: 4rem
+    font-weight: bolder
+    margin: 0 0 50px
+    &::after
+      position: absolute
+      width: 20px
+      height: 2px
+      top: 50%
+      right: 17px
+      content: ''
+      background: #000
+
+  &__list-count
+    position: relative
+    top: 2px
+    font-size: 1.4rem
+    padding-left: 35px
+
+  &__container
+    position: relative
+    width: 1200px
+
+  &__list
+    display: flex
+    overflow: hidden
+    margin: 0 auto
+    padding: 20px 0
+
+    & li
+      position: relative
+      flex: 0 0 25%
+      left: 0
+      transition: left 0.3s
+
+      & a
+        display: block
+        transform: scale(1)
+        transition: all 0.5s
+      & a:hover
+        transform: scale(1.1)
+
+    &__item
+      position: relative
+      width: 80%
+      margin: 0 10%
+
+      &__heading
+        @extend %hidden
+
+      &__img
+        display: block
+        width: 100%
+        height: auto
+        border-radius: 8px
+
+      & figcaption
+        position: absolute
+        width: 94%
+        margin: 0 3%
+        left: 0
+        bottom: -8px
+
+      &__title
+        padding: 5px 3px
+        border-radius: 3px 3px 0 0
+      &__artist
+        padding: 0 3px 5px
+        border-radius: 0 0 3px 3px
+      &__title,
+      &__artist
+        margin: 0
+        font-size: 1.4rem
+        color: #fff
+        background: #000
+
+  &__link__prev,
+  &__link__next
+    display: flex
+    position: absolute
+    top: 0
+    height: 100%
+    padding: 0 15px
+    font-size: 4rem
+    color: rgba(#000, 0.5)
+    align-items: center
+    z-index: 10
+
+  &__link__prev
+    left: -2.5%
+  &__link__next
+    right: -2.5%
+
+// music-player 영역
+.music__player__container
+  position: absolute
+  top: 50%
+  left: 50%
+  width: 400px
+  height: 400px
+  opacity: 0
+  transform-style: preserve-3d
+  transform-origin: center center
+  transform: translate(-50%, -50%) perspective(450px) rotateY(0deg)
+  transition: opacity 1s ease-out, transform 1s ease-out
+  z-index: -1
+  &.is-music-select
+    opacity: 1
+    z-index: 20
+  &.is-play
+    transform: translate(-50%, -50%) rotateY(180deg)
+
+.music__player
+  &__flip-front,
+  &__flip-back
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    backface-visibility: hidden
+    z-index: 20
+  &__flip-back
+    border-radius: 8px
+    transform: rotateY(180deg)
+  &__img__container
+    position: relative
+    &::after
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      border-radius: 8px
+      content: ''
+      background: rgba(#fff, 0.2)
+  &__img
+    display: block
+    width: 100%
+    height: auto
+    border-radius: 8px
+
+  &__heading
+    @extend %hidden
+  &__img
+    width: 100%
+    height: auto
+    border-radius: 8px
+
+  & figcaption
+    position: absolute
+    width: 94%
+    margin: 0 3%
+    left: 0
+    bottom: -8px
+
+  &__title
+    padding: 5px 3px
+    border-radius: 3px 3px 0 0
+  &__artist
+    padding: 0 3px 5px
+    border-radius: 0 0 3px 3px
+  &__title,
+  &__artist
+    margin: 0
+    font-size: 1.4rem
+    color: #fff
+    background: #000
+
+  &__play-btn
+    position: absolute
+    top: 50%
+    left: 50%
+    width: 50px
+    height: 50px
+    transform: translate(-50%, -50%)
+    & i
+      font-size: 7rem
+      color: #fff
+  &__close-btn
+    position: absolute
+    top: 5px
+    right: 5px
+    & i
+      font-size: 3rem
+      color: #eee
+
+  &__control
+    &__button
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      display: flex
+      width: 100%
+      justify-content: center
+      &__forward,
+      &__backward
+        flex-grow: 1
+      &__pause
+        margin: 0 50px
+      & i
+        font-size: 4rem
+        color: #fff
+      & i.fa-pause-circle
+        font-size: 7rem
+    &__seekbar
+      display: flex
+      position: absolute
+      left: 0
+      bottom: -8px
+      width: 94%
+      height: 50px
+      border-radius: 3px
+      margin: 0 3%
+      align-items: center
+      background: #000
+      &__current-time,
+      &__total-time
+        flex: 0 1 15%
+        text-align: center
+        font-size: 1.2rem
+        color: #fff
+      &__progress
+        position: relative
+        flex: 0 1 70%
+        height: 15px
+        margin: 0 5px
+        cursor: pointer
+
+        &::before
+          position: absolute
+          top: 6.5px
+          left: 0
+          width: 100%
+          height: 2px
+          content: ''
+          background: #ddd
+        &--circle
+          position: absolute
+          top: 2.5px
+          left: 10%
+          width: 10px
+          height: 10px
+          border-radius: 50%
+          background: skyblue
+          transform: translateX(-50%)
+        &--bar
+          position: absolute
+          top: 6.5px
+          width: 10%
+          height: 2px
+          background: skyblue

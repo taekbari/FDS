@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Music Player</title>
+  <link rel="stylesheet" href="./css/music-player.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <main class="player">
+    <h1 class="player__heading">Playlists <span class="player__list-count">2</span></h1>
+    <div class="player__container">
+      <script id="music-list-template" type="text/x-handlebars-template">
+      <ul class="player__list">
+        {{#items}}
+        <li>
+          <a href="#">
+            <figure class="player__list__item">
+              <h2 class="player__list__item__heading">{{alt}}</h2>
+              <img class="player__list__item__img" src="{{cover}}" alt="{{alt}}">
+              <figcaption>
+                <h3 class="player__list__item__title">{{title}}</h3>
+                <p class="player__list__item__artist">{{artist}}</p>
+              </figcaption>
+            </figure>
+          </a>
+        </li>
+        {{/items}}
+      </ul>
+      </script>
+      <a class="player__link__prev" href="#">&lt;</a>
+      <a class="player__link__next" href="#">&gt;</a>
+    </div>
+    <div class="music__player__container is-play">
+    <script id="music-player-template" type="text/x-handlebars-template">
+      <div class="music__player__flip-front">
+        <figure class="music__player">
+          <h2 class="music__player__heading">{{alt}}</h2>
+          <img class="music__player__img" src="{{cover}}" alt="{{alt}}">
+          <figcaption>
+            <h3 class="music__player__title">{{title}}</h3>
+            <p class="music__player__artist">{{artist}}</p>
+          </figcaption>
+        </figure>
+        <button class="music__player__play-btn" type="button"><i class="fa fa-play-circle" aria-hidden="true"></i></button>
+        <button class="music__player__close-btn" type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
+      </div>
+      <div class="music__player__flip-back">
+        <div class="music__player__img__container">
+          <img class="music__player__img" src="{{cover}}" alt="{{alt}}">
+        </div>
+        <div class="music__player__control__button">
+          <button class="music__player__control__button__backward" type="button"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
+          <button class="music__player__control__button__pause" type="button"><i class="fa fa-pause-circle" aria-hidden="true"></i></button>
+          <button class="music__player__control__button__forward" type="button"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
+        </div>
+        <div class="music__player__control__seekbar">
+          <span class="music__player__control__seekbar__current-time">00:00</span>
+          <div class="music__player__control__seekbar__progress">
+            <div class="music__player__control__seekbar__progress--bar"></div>
+            <div class="music__player__control__seekbar__progress--circle"></div>
+          </div>
+          <span class="music__player__control__seekbar__total-time">03:00</span>
+        </div>
+      </div>
+    </script>
+    </div>
+  </main>
+  <script src="./js/music-player.js"></script>
+  <script src="./js/Model.js"></script>
+  <script src="./js/MusicList.js"></script>
+  <script src="./js/MusicPlayer.js"></script>
+  <script>
+    var model = new Model(data);
+    var music_list = new MusicList(model);
+    var music_player = new MusicPlayer();
+    var player_container = document.querySelector('.player__container');
+    player_container.insertAdjacentHTML('afterbegin', music_list.make());
+
+    music_list.bindEvent(music_player.show);
+
+    var music_list_item = player_container.querySelectorAll('.player__list li');
+    var prev_link = player_container.querySelector('.player__link__prev');
+    var next_link = player_container.querySelector('.player__link__next');
+
+    console.log(music_list_item);
+    var total_item_count = model.size();
+    var move_count = 0;
+    var max_move_count = total_item_count - 4;
+
+    prev_link.onclick = function(event) {
+      if (move_count === max_move_count) {
+        return false;
+      }
+      event.preventDefault();
+
+      var move_position = -(++move_count * 25);
+      for (var i = 0, length = music_list_item.length; i < length; i++) {
+        music_list_item[i].style.cssText = "left: " + move_position + "%";
+      }
+    }
+
+    next_link.onclick = function(event) {
+      if (move_count === 0) {
+        return false;
+      }
+
+      event.preventDefault();
+
+      var move_position = -(--move_count * 25);
+      for (var i = 0, length = music_list_item.length; i < length; i++) {
+        music_list_item[i].style.cssText = "left: " + move_position + "%";
+      }
+    }
+  </script>
+</body>
+</html>
