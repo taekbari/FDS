@@ -6,8 +6,8 @@
         <button class="signin-btn" type="button">회원가입</button>
         <div class="sns-link">
           <em>또는 아래 계정으로 로그인</em>
-          <a href="#">google</a>
-          <a href="#">facebook</a>
+          <a class="google" href="#">google</a>
+          <a class="facebook" href="#">facebook</a>
         </div>
       </div>
     </sign-in-modal>
