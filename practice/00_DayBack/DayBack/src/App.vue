@@ -1,60 +1,82 @@
-<template>
+<template lang="html">
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1></h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <sign-in-modal>
+      <div class="signin">
+        <sign-in-form></sign-in-form>
+        <button class="signin-btn" type="button">회원가입</button>
+        <div class="sns-link">
+          <em>또는 아래 계정으로 로그인</em>
+          <a href="#">google</a>
+          <a href="#">facebook</a>
+        </div>
+      </div>
+    </sign-in-modal>
   </div>
 </template>
 
 <script>
+import SignInModal from './components/Modal.vue';
+import SignInForm from './components/Form.vue';
+
 export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+    };
+  },
+  components: {
+    SignInModal,
+    SignInForm
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+html, body {
+  height: 100%;
+}
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
-h1, h2 {
-  font-weight: normal;
+.signin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  padding: 30px 20px;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+.sns-link em {
+  position: relative;
+  font-style: normal;
+  font-size: 0.75rem;
+  color: #505050;
+  display: block;
+  font-weight: 200;
+  line-height: 3.33333;
 }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
+.sns-link em::before,
+.sns-link em::after {
+  position: absolute;
+  content: '';
+  width: 80px;
+  height: 1px;
+  top: 50%;
+  background: #a0a0a0;
 }
 
-a {
-  color: #42b983;
+.sns-link em::before {
+  right: 50%;
+  margin-right: 80px;
+}
+.sns-link em::after {
+  left: 50%;
+  margin-left: 80px;
 }
 </style>
