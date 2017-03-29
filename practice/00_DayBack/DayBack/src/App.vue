@@ -1,6 +1,7 @@
 <template lang="html">
   <div id="app">
-    <sign-in-modal>
+    <button type="button" @click="showModal">Show Modal</button>
+    <sign-in-modal v-if="false" @close="closeModal">
       <div class="signin">
         <sign-in-form></sign-in-form>
         <button class="signin-btn" type="button">회원가입</button>
@@ -11,22 +12,38 @@
         </div>
       </div>
     </sign-in-modal>
+    <sign-in-modal v-if="isShowModal" @close="closeModal">
+      <div class="signin">
+        <sign-up-form></sign-up-form>
+      </div>
+    </sign-in-modal>
   </div>
 </template>
 
 <script>
 import SignInModal from './components/Modal.vue';
 import SignInForm from './components/Form.vue';
+import SignUpForm from './components/SignUp.vue';
 
 export default {
   name: 'app',
   data () {
     return {
+      isShowModal: false
     };
   },
   components: {
     SignInModal,
-    SignInForm
+    SignInForm,
+    SignUpForm
+  },
+  methods: {
+    showModal () {
+      this.isShowModal = true;
+    },
+    closeModal () {
+      this.isShowModal = false;
+    }
   }
 }
 </script>

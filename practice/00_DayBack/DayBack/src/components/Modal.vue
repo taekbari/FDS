@@ -2,7 +2,7 @@
   <div class="modal">
     <div class="modal-content">
       <slot></slot>
-      <a class="modal-close">close</a>
+      <a class="modal-close" @click.prevent="$emit('close')">close</a>
     </div>
   </div>
 </template>
@@ -53,5 +53,6 @@ export default {
   background-size: 444px 335px;
   background-repeat: no-repeat;
   background-position: -299px -132px;
+  cursor: pointer;
 }
 </style>
