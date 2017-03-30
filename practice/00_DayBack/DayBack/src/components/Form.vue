@@ -7,6 +7,9 @@
       <input v-model="userEmail" type="email" placeholder="이메일" required>
       <input v-model="userPassword" type="password" placeholder="비밀번호" required>
       <button @click="signIn" type="submit">로그인</button>
+
+      <slot name="input"></slot>
+      <slot name="button"></slot>
     </fieldset>
   </form>
 </template>

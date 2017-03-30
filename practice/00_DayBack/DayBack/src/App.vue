@@ -1,21 +1,22 @@
 <template lang="html">
   <div id="app">
     <button type="button" @click="showModal">Show Modal</button>
-    <sign-in-modal v-if="false" @close="closeModal">
-      <div class="signin">
-        <sign-in-form></sign-in-form>
-        <button class="signin-btn" type="button">회원가입</button>
-        <div class="sns-link">
-          <em>또는 아래 계정으로 로그인</em>
-          <a class="google" href="#">google</a>
-          <a class="facebook" href="#">facebook</a>
-        </div>
-      </div>
-    </sign-in-modal>
     <sign-in-modal v-if="isShowModal" @close="closeModal">
-      <div class="signin">
-        <sign-up-form></sign-up-form>
-      </div>
+      <transition name="signin" appear mode="out-in">
+        <div class="signin" v-if="isSelect" key="sign-in-div">
+          <sign-in-form></sign-in-form>
+          <button class="signin-btn" type="button" @click="showSignUp">회원가입</button>
+          <div class="sns-link">
+            <em>또는 아래 계정으로 로그인</em>
+            <a class="google" href="#">google</a>
+            <a class="facebook" href="#">facebook</a>
+          </div>
+        </div>
+        <div class="signin" v-else key="sign-up-div">
+          <sign-up-form></sign-up-form>
+          <button class="signin-btn" type="button" @click="showSignIn">로그인</button>
+        </div>
+      </transition>
     </sign-in-modal>
   </div>
 </template>
@@ -29,7 +30,8 @@ export default {
   name: 'app',
   data () {
     return {
-      isShowModal: false
+      isShowModal: false,
+      isSelect: true
     };
   },
   components: {
@@ -43,6 +45,13 @@ export default {
     },
     closeModal () {
       this.isShowModal = false;
+      this.isSelect = true;
+    },
+    showSignUp () {
+      this.isSelect = false;
+    },
+    showSignIn () {
+      this.isSelect = true;
     }
   }
 }
@@ -96,4 +105,14 @@ html {
   left: 50%;
   margin-left: 80px;
 }
+
+.signin-enter,
+.signin-leave-to {
+  opacity: 0;
+}
+.signin-enter-active,
+.signin-leave-active {
+  transition: opacity 1s;
+}
+
 </style>
