@@ -40,6 +40,9 @@ export default {
     SignUpForm
   },
   methods: {
+    buttonClick () {
+      console.log('button clicked');
+    },
     showModal () {
       this.isShowModal = true;
     },
