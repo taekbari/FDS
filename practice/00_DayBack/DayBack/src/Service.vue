@@ -76,26 +76,28 @@
             </section>
           </md-layout>
           <md-layout md-column>
-            <md-layout md-flex="80" md-tag="article">
-              <md-card md-with-hover class="popup-content">
-                <div class="popup-title">
-                  I'm Happy.
-                </div>
-                <md-card-header>
-                  <div class="md-title">Title goes here</div>
-                  <div class="md-subhead">Subtitle here</div>
-                </md-card-header>
+            <template v-for="content in dailyData">
+              <md-layout md-tag="article">
+                <md-card md-with-hover class="popup-content">
+                  <div class="popup-title">
+                    I'm Happy.
+                  </div>
+                  <md-card-header>
+                    <div class="md-title">Title goes here</div>
+                    <div class="md-subhead">Subtitle here</div>
+                  </md-card-header>
 
-                <md-card-content>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non, voluptas eius illo quas, saepe voluptate pariatur in deleniti minus sint. Excepturi.
-                </md-card-content>
+                  <md-card-content>
+                    {{content.inputValue}}
+                  </md-card-content>
 
-                <md-card-actions>
-                  <md-button>Action</md-button>
-                  <md-button>Action</md-button>
-                </md-card-actions>
-              </md-card>
-            </md-layout>
+                  <md-card-actions>
+                    <md-button>Action</md-button>
+                    <md-button>Action</md-button>
+                  </md-card-actions>
+                </md-card>
+              </md-layout>
+            </template>
           </md-layout>
         </md-layout>
 
@@ -123,28 +125,28 @@
           <form>
             <md-input-container>
               <label>Note</label>
-              <md-textarea></md-textarea>
+              <md-input v-model="dayContent.inputValue"></md-input>
             </md-input-container>
           </form>
           <md-list class="layout-flex">
             <md-list-item>
-              <a href=""><md-icon class="input-emoticon smaile"></md-icon></a>
+              <a href="" :class="{'emotion-click' : 1 & emotionClicked}" @click.prevent="changeEmoticon(1)"><md-icon class="input-emoticon smaile"></md-icon></a>
             </md-list-item>
             <md-list-item>
-              <a href=""><md-icon class="input-emoticon sad"></md-icon></a>
+              <a href="" :class="{'emotion-click' : 2 & emotionClicked}" @click.prevent="changeEmoticon(2)"><md-icon class="input-emoticon sad"></md-icon></a>
             </md-list-item>
             <md-list-item>
-              <a href=""><md-icon class="input-emoticon angry"></md-icon></a>
+              <a href="" :class="{'emotion-click' : 4 & emotionClicked}" @click.prevent="changeEmoticon(3)"><md-icon class="input-emoticon angry"></md-icon></a>
             </md-list-item>
             <md-list-item>
-              <a href=""><md-icon class="input-emoticon good"></md-icon></a>
+              <a href="" :class="{'emotion-click' : 8 & emotionClicked}" @click.prevent="changeEmoticon(4)"><md-icon class="input-emoticon good"></md-icon></a>
             </md-list-item>
           </md-list>
         </md-dialog-content>
 
         <md-dialog-actions>
           <md-button class="md-primary" @click.native="closeDialog('dialog2')">Cancel</md-button>
-          <md-button class="md-primary" @click.native="closeDialog('dialog2')">Create</md-button>
+          <md-button class="md-primary" @click.native="submitContent('dialog2')">Create</md-button>
         </md-dialog-actions>
       </md-dialog>
     </div>
@@ -152,16 +154,39 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
+      emotionClicked: 0,
+      dayContent: {
+        emoticon: 1,
+        inputValue: ''
+      },
+      dailyData: []
     }
   },
+  mounted() {
+    this.getDayContent();
+  },
   methods: {
+    changeEmoticon(value) {
+      switch (value) {
+        case 1: this.emotionClicked = 1; break;
+        case 2: this.emotionClicked = 2; break;
+        case 3: this.emotionClicked = 4; break;
+        case 4: this.emotionClicked = 8; break;
+      }
+      this.dayContent.emoticon = value;
+    },
     openDialog(ref) {
       this.$refs[ref].open();
     },
     closeDialog(ref) {
+      this.dayContent.inputValue = '';
+      this.dayContent.emoticon = 1;
+      this.emotionClicked = 0;
       this.$refs[ref].close();
     },
     onOpen() {
@@ -169,6 +194,36 @@ export default {
     },
     onClose(type) {
       console.log('Closed', type);
+    },
+    submitContent(ref) {
+      let _this = this;
+      axios.post('https://dayback-163404.firebaseio.com/dayback.json', this.dayContent)
+          .then(function(response) {
+            console.log(response);
+            if (response.status === 200 && response.statusText === 'OK') {
+              // 성공했을 경우
+              console.log(response.data);
+              window.alert('오늘의 기분이 저장되었습니다.');
+              _this.closeDialog(ref);
+              _this.getDayContent();
+            }
+          })
+          .catch(function(error) {
+            console.error(error);
+          })
+    },
+    getDayContent() {
+      let _this = this;
+      axios.get('https://dayback-163404.firebaseio.com/dayback.json')
+           .then(function(response) {
+             if (response.status === 200 && response.statusText === 'OK') {
+               console.log(Object.values(response.data));
+               _this.dailyData = Object.values(response.data);
+             }
+           })
+           .catch(function(error) {
+             console.error(error.message);
+           })
     }
   },
   computed: {
@@ -192,12 +247,22 @@ export default {
 </script>
 
 <style lang="css">
+.md-list-item-container a {
+  transform: scale(1);
+  border: 1px solid #eee;
+  border-radius: 50%;
+  transition: all 1s ease;
+}
+.md-list-item-container a.emotion-click {
+  transform: scale(1.4);
+}
 .input-emoticon {
   background-image: url('./assets/img-emoticon.png');
   background-size: 200px;
   background-repeat: no-repeat;
   width: 50px;
   height: 50px;
+  border-radius: 50%;
 }
 .smaile {
   background-position: -7px -12px;
@@ -218,6 +283,8 @@ export default {
 .md-card.popup-content {
   position: relative;
   overflow: visible;
+  flex-basis: 100%;
+  margin: 20px 0;
 }
 .popup-title {
   position: absolute;
