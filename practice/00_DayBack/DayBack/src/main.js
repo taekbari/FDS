@@ -13,6 +13,15 @@ Vue.material.registerTheme('default', {
   background: 'white'
 })
 
+let eventBus = new Vue();
+Object.defineProperties(Vue.prototype, {
+  $eventBus: {
+    get() {
+      return eventBus;
+    }
+  }
+});
+
 new Vue({
   el: '#app',
   render: h => h(App)
