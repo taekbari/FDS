@@ -82,15 +82,15 @@
                   <div class="popup-title">
                     I'm Happy.
                   </div>
-                  <md-card-header>
-                    <div class="md-title">Title goes here</div>
-                    <div class="md-subhead">Subtitle here</div>
+                  <md-card-header class="card-header">
+                    <div :class="['input-emoticon',
+                        {'smaile': 1 & changeEmoticon(content.value.emoticon),
+                         'sad': 2 & changeEmoticon(content.value.emoticon),
+                         'angry': 4 & changeEmoticon(content.value.emoticon),
+                         'good': 8 & changeEmoticon(content.value.emoticon)
+                         }]"></div>
+                    <div class="md-title">{{content.value.inputValue}}</div>
                   </md-card-header>
-
-                  <md-card-content>
-                    {{content.value.inputValue}}
-                    {{content.value.emoticon}}
-                  </md-card-content>
 
                   <md-card-actions>
                     <md-button @click.native="updateContent(content.id)">수정</md-button>
@@ -155,6 +155,14 @@ export default {
     openDialog() {
       this.$eventBus.$emit('dialogOpen');
     },
+    changeEmoticon(value) {
+      switch (value) {
+        case 1: return 1;
+        case 2: return 2;
+        case 3: return 4;
+        case 4: return 8;;
+      }
+    },
     getDayContent() {
       let _this = this;
       axios.get('https://dayback-163404.firebaseio.com/dayback.json')
@@ -209,6 +217,15 @@ export default {
 </script>
 
 <style lang="css">
+.md-card .md-card-header.card-header {
+  padding-top: 35px;
+  display: flex;
+}
+.card-header .md-title {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
 .md-list-item-container a {
   transform: scale(1);
   border: 1px solid #eee;
