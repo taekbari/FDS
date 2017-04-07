@@ -88,12 +88,13 @@
                   </md-card-header>
 
                   <md-card-content>
-                    {{content.inputValue}}
+                    {{content.value.inputValue}}
+                    {{content.value.emoticon}}
                   </md-card-content>
 
                   <md-card-actions>
-                    <md-button>Action</md-button>
-                    <md-button>Action</md-button>
+                    <md-button @click.native="updateContent(content.id)">수정</md-button>
+                    <md-button @click.native="deleteContent(content.id)">삭제</md-button>
                   </md-card-actions>
                 </md-card>
               </md-layout>
@@ -133,6 +134,16 @@ export default {
   },
   created() {
     this.$eventBus.$on('submitComplete', this.getDayContent);
+    let date = new Date('2017/1/29');
+    let selectedDayOfMonth = date.getDate();
+    let first = new Date(date.getFullYear() + '/' + (date.getMonth() + 1) + '/01');
+    let monthFirstDateDay = first.getDay();
+    let weekCount = Math.ceil((selectedDayOfMonth + monthFirstDateDay) / 7);
+    // console.log(date.getFullYear() + '/' + (date.getMonth() + 1) + '/01');
+    // console.log('selectedDayOfMonth : ', selectedDayOfMonth);
+    // console.log('first : ', first);
+    // console.log('monthFirstDateDay : ', monthFirstDateDay);
+    // console.log('weekCount : ', weekCount);
   },
   components: {
     appInput: Input
@@ -149,13 +160,32 @@ export default {
       axios.get('https://dayback-163404.firebaseio.com/dayback.json')
            .then(function(response) {
              if (response.status === 200 && response.statusText === 'OK') {
-               console.log(Object.values(response.data));
-               _this.dailyData = Object.values(response.data);
+               _this.dailyData = [];
+               for (let key in response.data) {
+                 let data = {};
+                 data.id = key;
+                 data.value = response.data[key];
+                 _this.dailyData.push(data);
+               }
              }
            })
            .catch(function(error) {
              console.error(error.message);
+           });
+    },
+    updateContent(id) {
+      this.$eventBus.$emit('dialogOpen', id);
+    },
+    deleteContent(id) {
+      let _this = this;
+      axios.delete('https://dayback-163404.firebaseio.com/dayback/' + id + '.json')
+           .then(function(response) {
+             window.alert('삭제되었습니다.');
+             _this.getDayContent();
            })
+           .catch(function(error) {
+             console.error(error.message);
+           });
     }
   },
   computed: {

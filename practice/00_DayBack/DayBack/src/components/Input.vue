@@ -38,6 +38,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
+      id: '',
       emotionClicked: 0,
       dayContent: {
         emoticon: 1,
@@ -49,13 +50,15 @@ export default {
     this.$eventBus.$on('dialogOpen', this.openDialog);
   },
   methods: {
-    openDialog() {
+    openDialog(id) {
+      this.fillInputContent(id);
       this.$refs['dialog2'].open();
     },
     closeDialog(ref) {
-      this.dayContent.inputValue = '';
+      this.dayContent.inputValue = null;
       this.dayContent.emoticon = 1;
       this.emotionClicked = 0;
+      this.id = '';
       this.$refs[ref].close();
     },
     onOpen() {
@@ -63,6 +66,23 @@ export default {
     },
     onClose(type) {
       console.log('Closed', type);
+    },
+    fillInputContent(id) {
+      if (!id) {
+        return;
+      }
+      let _this = this;
+      this.id = id;
+      axios.get('https://dayback-163404.firebaseio.com/dayback/' + id + '.json')
+           .then(function(response) {
+             let data = response.data;
+             _this.dayContent.inputValue = data.inputValue;
+             _this.dayContent.emoticon = data.emoticon;
+             _this.changeEmoticon(data.emoticon);
+           })
+           .catch(function(error) {
+             console.error(error.message);
+           });
     },
     changeEmoticon(value) {
       switch (value) {
@@ -75,20 +95,35 @@ export default {
     },
     submitContent(ref) {
       let _this = this;
-      axios.post('https://dayback-163404.firebaseio.com/dayback.json', this.dayContent)
-          .then(function(response) {
-            console.log(response);
-            if (response.status === 200 && response.statusText === 'OK') {
-              // 성공했을 경우
-              console.log(response.data);
-              window.alert('오늘의 기분이 저장되었습니다.');
-              _this.closeDialog(ref);
-              _this.$eventBus.$emit('submitComplete');
-            }
-          })
-          .catch(function(error) {
-            console.error(error);
-          })
+
+      if (this.id) {
+        axios.put('https://dayback-163404.firebaseio.com/dayback/' + this.id + '.json', this.dayContent)
+        .then(function(response) {
+          if (response.status === 200 && response.statusText === 'OK') {
+            // 성공했을 경우
+            window.alert('오늘의 기분이 수정되었습니다.');
+            _this.closeDialog(ref);
+            _this.$eventBus.$emit('submitComplete');
+          }
+        })
+        .catch(function(error) {
+          console.error(error);
+        })
+      }
+      else {
+        axios.post('https://dayback-163404.firebaseio.com/dayback.json', this.dayContent)
+        .then(function(response) {
+          if (response.status === 200 && response.statusText === 'OK') {
+            // 성공했을 경우
+            window.alert('오늘의 기분이 저장되었습니다.');
+            _this.closeDialog(ref);
+            _this.$eventBus.$emit('submitComplete');
+          }
+        })
+        .catch(function(error) {
+          console.error(error);
+        })
+      }
     }
   }
 }
