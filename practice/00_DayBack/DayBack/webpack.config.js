@@ -2,19 +2,11 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  // 멀티 파일 번들링을 위한 설정.
-  // entry값을 객체로 설정할 경우 다수의 번들 파일을 생성할 수 있다.
-  // 현재는 2개의 번들이 필요하지 때문에, index와 service 번들 선언.
-  entry: {
-    'index': './src/main.js',
-    'service': './src/service.js'
-  },
+  entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    // entry 포인트에 해당하는 js 파일 생성을 위해서 [name]를 사용.
-    // filename 수정하지 않으면 하나의 파일에 번들링된다.
-    filename: '[name].js'
+    filename: 'build.js'
   },
   module: {
     rules: [

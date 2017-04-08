@@ -29,6 +29,10 @@ export default {
       // 기본 이벤트를 막으면 타입 체크하는 부분이 동작하지 않음
       // 모든 값이 입력되고 처리될 때 기본 이벤트 막음
       if (!this.userEmail || !this.userPassword) {
+        // 페이지 전환 확인을 위해 넣어준 부분.
+        // 정상적으로 로그인 완료 되었을 때 호출되도록 수정해야한다.
+        // 사용자 정보 어떻게 넘겨줄지도 생각해 봐야한다.
+        this.$router.push({path: '/service'});
         return;
       }
 
