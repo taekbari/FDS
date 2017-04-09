@@ -24,82 +24,8 @@
       </md-whiteframe>
       <div class="service-content">
         <md-layout>
-          <md-layout md-column class="week-container">
-            <section>
-              <h2 class="md-subheading week-title">4월 1주</h2>
-              <div class="week-content">
-                <ul class="week-list">
-                  <li class="week-item">
-                    <md-card>
-                      <md-card-header>
-                        <md-card-header-text>
-                          <div class="md-subheading">
-                            11:00
-                          </div>
-                          <div class="md-subheading">
-                            Meeting
-                          </div>
-                        </md-card-header-text>
-                      </md-card-header>
-                    </md-card>
-                  </li>
-                  <li class="week-item">
-                    <md-card>
-                      <md-card-header>
-                        <md-card-header-text>
-                          <div class="md-subheading">
-                            11:00
-                          </div>
-                          <div class="md-subheading">
-                            New Project with Bold Studio @Lorem Cafe
-                          </div>
-                        </md-card-header-text>
-                      </md-card-header>
-                    </md-card>
-                  </li>
-                  <li class="week-item">
-                    <md-card>
-                      <md-card-header>
-                        <md-card-header-text>
-                          <div class="md-subheading">
-                            11:00
-                          </div>
-                          <div class="md-subheading">
-                            Dinner with wife
-                          </div>
-                        </md-card-header-text>
-                      </md-card-header>
-                    </md-card>
-                  </li>
-                </ul>
-              </div>
-            </section>
-          </md-layout>
-          <md-layout md-column>
-            <template v-for="content in dailyData">
-              <md-layout md-tag="article">
-                <md-card md-with-hover class="popup-content">
-                  <div class="popup-title">
-                    I'm Happy.
-                  </div>
-                  <md-card-header class="card-header">
-                    <div :class="['input-emoticon',
-                        {'smaile': 1 & changeEmoticon(content.value.emoticon),
-                         'sad': 2 & changeEmoticon(content.value.emoticon),
-                         'angry': 4 & changeEmoticon(content.value.emoticon),
-                         'good': 8 & changeEmoticon(content.value.emoticon)
-                         }]"></div>
-                    <div class="md-title">{{content.value.inputValue}}</div>
-                  </md-card-header>
-
-                  <md-card-actions>
-                    <md-button @click.native="updateContent(content.id)">수정</md-button>
-                    <md-button @click.native="deleteContent(content.id)">삭제</md-button>
-                  </md-card-actions>
-                </md-card>
-              </md-layout>
-            </template>
-          </md-layout>
+          <week-list :daily-data="dailyData"></week-list>
+          <today-card :today-data="dailyData[dailyData.length - 1]"></today-card>
         </md-layout>
 
         <md-speed-dial md-open="hover" md-direction="bottom" class="md-fab-top-right" md-theme="light-blue">
@@ -125,6 +51,8 @@
 <script>
 import axios from 'axios';
 import Input from './components/Input.vue';
+import WeekList from './components/Week.vue';
+import TodayCard from './components/Today.vue';
 
 export default {
   data() {
@@ -134,6 +62,7 @@ export default {
   },
   created() {
     this.$eventBus.$on('submitComplete', this.getDayContent);
+
     let date = new Date('2017/1/29');
     let selectedDayOfMonth = date.getDate();
     let first = new Date(date.getFullYear() + '/' + (date.getMonth() + 1) + '/01');
@@ -146,7 +75,9 @@ export default {
     // console.log('weekCount : ', weekCount);
   },
   components: {
-    appInput: Input
+    appInput: Input,
+    weekList: WeekList,
+    todayCard: TodayCard
   },
   mounted() {
     this.getDayContent();
@@ -154,14 +85,6 @@ export default {
   methods: {
     openDialog() {
       this.$eventBus.$emit('dialogOpen');
-    },
-    changeEmoticon(value) {
-      switch (value) {
-        case 1: return 1;
-        case 2: return 2;
-        case 3: return 4;
-        case 4: return 8;;
-      }
     },
     getDayContent() {
       let _this = this;
@@ -176,20 +99,6 @@ export default {
                  _this.dailyData.push(data);
                }
              }
-           })
-           .catch(function(error) {
-             console.error(error.message);
-           });
-    },
-    updateContent(id) {
-      this.$eventBus.$emit('dialogOpen', id);
-    },
-    deleteContent(id) {
-      let _this = this;
-      axios.delete('https://dayback-163404.firebaseio.com/dayback/' + id + '.json')
-           .then(function(response) {
-             window.alert('삭제되었습니다.');
-             _this.getDayContent();
            })
            .catch(function(error) {
              console.error(error.message);
@@ -246,14 +155,26 @@ export default {
 .smaile {
   background-position: -7px -12px;
 }
+.smaile-color {
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
 .sad {
   background-position: -52px -12px;
+}
+.sad-color {
+  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
 }
 .angry {
   background-position: -97px -12px;
 }
+.angry-color {
+  background-image: linear-gradient(120deg, #feada6 0%, #f5efef 100%);
+}
 .good {
   background-position: -142px -12px;
+}
+.good-color {
+  background-image: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
 }
 
 .layout-flex {
@@ -265,14 +186,14 @@ export default {
   flex-basis: 100%;
   margin: 20px 0;
 }
-.popup-title {
+.popup-color {
   position: absolute;
   top: 0;
-  left: 30%;
-  width: 30%;
+  left: 20%;
+  width: 20%;
+  height: 30px;
   padding: 5px 0;
   color: #fff;
-  background: #000;
   text-align: center;
   transform: translate(-50%, -50%);
 }
@@ -286,49 +207,7 @@ export default {
 }
 .service-content {
   position: relative;
-  background: #eee;
-  padding: 50px;
-}
-.week-container {
-  margin-right: 20px;
-  width: 100%;
-}
-.week-list {
-  position: relative;
-  list-style: none;
-  padding: 10px 0 0;
-  margin: 0 0 0 10%;
-  border-left: 4px solid #aaa;
-}
-.week-item {
-  position: relative;
-  margin-left: 20px;
-}
-.week-item::after {
-  display: block;
-  content: '';
-  clear: both;
-}
-.week-item::before {
-  position: absolute;
-  content: '';
-  top: 50%;
-  left: -22px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: yellow;
-  transform: translate(-50%, -50%);
-}
-.week-title {
-  width: 20%;
-  background: skyblue;
-  text-align: center;
-  color: #fff;
-  padding: 5px 0;
-  margin-bottom: 0;
-}
-.week-item .md-card {
-  float: left;
+  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+  padding: 100px 50px 10px;
 }
 </style>
