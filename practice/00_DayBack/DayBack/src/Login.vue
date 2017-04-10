@@ -104,7 +104,7 @@ export default {
 }
 .signin-enter-active,
 .signin-leave-active {
-  transition: opacity 1s;
+  transition: opacity 0.5s;
 }
 
 </style>

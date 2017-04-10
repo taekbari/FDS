@@ -37,10 +37,6 @@
           <md-button id="fab" @click.native="openDialog()" class="md-fab md-primary md-mini md-clean">
             <md-icon>note_add</md-icon>
           </md-button>
-
-          <md-button class="md-fab md-primary md-mini md-clean">
-            <md-icon>alarm_add</md-icon>
-          </md-button>
         </md-speed-dial>
       </div>
     </div>

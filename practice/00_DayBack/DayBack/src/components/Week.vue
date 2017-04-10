@@ -52,8 +52,11 @@ export default {
 
 <style lang="css">
 .week-container {
-  margin-right: 20px;
   width: 100%;
+  margin-right: 20px;
+}
+.week-container section {
+  margin-left: 50px;
 }
 .week-list {
   position: relative;

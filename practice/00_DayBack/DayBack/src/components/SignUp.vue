@@ -1,5 +1,5 @@
 <template lang="html">
-  <form class="signup-form" action="index.html" method="post">
+  <form class="signin-form" action="index.html" method="post">
     <h2>회원가입</h2>
     <fieldset>
       <legend>Sign Up Form</legend>

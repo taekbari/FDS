@@ -1,7 +1,7 @@
 <template lang="html">
-  <div>
+  <transition name="signin" appear mode="out-in">
     <router-view></router-view>
-  </div>
+  </transition>
 </template>
 
 <script>
