@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <div class="fix-width">
-      <md-whiteframe md-elevation="15" md-tag="header">
+      <md-whiteframe md-tag="header">
         <md-card>
           <md-card-header>
             <md-layout>
