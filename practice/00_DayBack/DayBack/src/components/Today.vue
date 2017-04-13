@@ -14,7 +14,7 @@
           'angry': 4 & selectedEmoticon,
           'good': 8 & selectedEmoticon
           }]"></div>
-          <div class="md-title" v-if="todayData">{{todayData.value.inputValue}}</div>
+          <div class="md-title" v-if="todayData">{{todayData.mood_comment}}</div>
         </md-card-header>
 
         <md-card-actions>
@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     changeEmoticon() {
-      switch (this.todayData.value.emoticon) {
+      switch (this.todayData.mood_chk) {
         case 1: return 1;
         case 2: return 2;
         case 3: return 4;

@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
     <button type="button" @click="showModal">Show Modal</button>
-    <sign-in-modal v-if="isShowModal" @close="closeModal">
+    <app-modal v-if="isShowModal" @close="closeModal">
       <transition name="signin" appear mode="out-in">
         <div class="signin" v-if="isSelect" key="sign-in-div">
           <sign-in-form></sign-in-form>
@@ -14,16 +14,15 @@
         </div>
         <div class="signin" v-else key="sign-up-div">
           <sign-up-form></sign-up-form>
-          <button class="signin-btn" type="button" @click="showSignIn">로그인</button>
         </div>
       </transition>
-    </sign-in-modal>
+    </app-modal>
   </div>
 </template>
 
 <script>
-import SignInModal from './components/Modal.vue';
-import SignInForm from './components/Form.vue';
+import AppModal from './components/Modal.vue';
+import SignInForm from './components/SignIn.vue';
 import SignUpForm from './components/SignUp.vue';
 
 export default {
@@ -35,14 +34,14 @@ export default {
     };
   },
   components: {
-    SignInModal,
+    AppModal,
     SignInForm,
     SignUpForm
   },
+  created() {
+    this.$eventBus.$on('showSignIn', this.showSignIn);
+  },
   methods: {
-    buttonClick () {
-      console.log('button clicked');
-    },
     showModal () {
       this.isShowModal = true;
     },

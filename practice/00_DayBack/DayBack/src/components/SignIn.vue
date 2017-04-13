@@ -7,9 +7,6 @@
       <input v-model="userEmail" type="email" placeholder="이메일" required>
       <input v-model="userPassword" type="password" placeholder="비밀번호" required>
       <button @click="signIn" type="submit">로그인</button>
-
-      <slot name="input"></slot>
-      <slot name="button"></slot>
     </fieldset>
   </form>
 </template>
@@ -20,8 +17,11 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      userEmail: null,
-      userPassword: null
+      // 로그인 완료되었을 때 서버로부터 받아온 token 값 저장을 위한 데이터 설정
+      sharedState: this.$store.state,
+      // 사용자 입력을 받기 위한 데이터 설정
+      userEmail: '',
+      userPassword: ''
     };
   },
   methods: {
@@ -29,34 +29,36 @@ export default {
       // 기본 이벤트를 막으면 타입 체크하는 부분이 동작하지 않음
       // 모든 값이 입력되고 처리될 때 기본 이벤트 막음
       if (!this.userEmail || !this.userPassword) {
-        // 페이지 전환 확인을 위해 넣어준 부분.
-        // 정상적으로 로그인 완료 되었을 때 호출되도록 수정해야한다.
-        // 사용자 정보 어떻게 넘겨줄지도 생각해 봐야한다.
-        this.$router.push({path: '/service'});
         return;
       }
 
       // 기본 이벤트(submit) 막음
       e.preventDefault();
-      // axios 사용해서 서버로 입력받은 데이터 전달
-      // 서버 측에서 전달받기 원하는 데이터로 수정해야함
-      // 임시로 email과 password 사용
-      axios.get('http://localhost:3000/todo-list', {
-              params: {
-                'email': this.userEmail,
-                'password': this.userPassword
-              }
+      // 로그인을 위한 통신
+      // 입력받은 email과 password 값 설정해서 요청
+      axios.post('https://dayback.hcatpr.com/login/', {
+              email: this.userEmail,
+              password: this.userPassword
             })
            .then(response => {
              // 서버 통신 성공했을 경우의 처리
-             if (response.status === 200 && response.statusText === 'OK') {
+             if (response.status === 200) {
+               // 로그인 완료되면 입력한 값 초기화
                this.userEmail = '';
                this.userPassword = '';
-               window.alert(response.data[0].name + '님이 로그인 하셨습니다.');
+               window.alert('로그인 되었습니다.');
+               // 로그인 성공하면 서버로부터 받아온 token 값을 설정
+               this.sharedState.token = response.data.key;
+               // 화면 전환을 위한 설정
+               this.$router.push({path: '/service'});
+             }
+             else {
+               window.alert('로그인에 실패하였습니다.');
              }
            })
            .catch(error => {
              // 로그인 실패했을 경우의 처리
+             // 입력 값 초기화
              this.userEmail = '';
              this.userPassword = '';
              window.alert('회원 정보가 존재하지 않습니다.');

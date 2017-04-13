@@ -6,10 +6,10 @@
         <ul class="week-list">
           <template v-for="(dayContent, index) in dailyData">
             <li :class="['week-item',
-            {'smaile-point': 1 & changeEmoticon(dayContent.value.emoticon),
-            'sad-point': 2 & changeEmoticon(dayContent.value.emoticon),
-            'angry-point': 4 & changeEmoticon(dayContent.value.emoticon),
-            'good-point': 8 & changeEmoticon(dayContent.value.emoticon)
+            {'smaile-point': 1 & changeEmoticon(dayContent.mood_chk),
+            'sad-point': 2 & changeEmoticon(dayContent.mood_chk),
+            'angry-point': 4 & changeEmoticon(dayContent.mood_chk),
+            'good-point': 8 & changeEmoticon(dayContent.mood_chk)
             }]" v-if="index < dailyData.length - 1 && index < 7">
               <div ></div>
               <md-card>
@@ -19,7 +19,7 @@
                       11:00
                     </div>
                     <div class="md-subheading">
-                      {{dayContent.value.inputValue}}
+                      {{dayContent.mood_comment}}
                     </div>
                   </md-card-header-text>
                 </md-card-header>

@@ -28,12 +28,27 @@ const router = new VueRouter({
   routes
 });
 
-// 이벤트 버스 사용을 위한 설정
+// 이벤트 버스 사용을 위한 변수 설정
 const eventBus = new Vue();
+// 데이터 상태 공유를 위한 변수 설정
+// 로그인 했을 때 서버로부터 얻어온 token 값을 컴포넌트 간에 사용하기 위해
+// token 변수 설정
+const store = {
+  state: {
+    token: ''
+  }
+};
 Object.defineProperties(Vue.prototype, {
+  // Vue.prototype에 eventBus 객체 연결
   $eventBus: {
     get() {
       return eventBus;
+    }
+  },
+  // Vue.prototype에 store 객체 연결
+  $store: {
+    get() {
+      return store;
     }
   }
 });

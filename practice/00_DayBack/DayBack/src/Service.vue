@@ -16,7 +16,7 @@
                 </md-layout>
               </md-layout>
               <md-layout md-flex="50" md-align="end">
-                <div class="md-subhead">by CodingTheSmartWay.com</div>
+                <div class="md-subhead"></div>
               </md-layout>
             </md-layout>
           </md-card-header>
@@ -53,22 +53,15 @@ import TodayCard from './components/Today.vue';
 export default {
   data() {
     return {
+      // 로그인 완료되었을 때 서버로부터 받아온 token 값 사용을 위한 데이터 설정
+      sharedState: this.$store.state,
+      // 로그인한 사용자가 작성한 글의 목록을 저장할 데이터 설정
       dailyData: []
     }
   },
   created() {
+    // 수정 또는 삭제 했을 때, 화면 갱신을 위한 이벤트 설정
     this.$eventBus.$on('submitComplete', this.getDayContent);
-
-    let date = new Date('2017/1/29');
-    let selectedDayOfMonth = date.getDate();
-    let first = new Date(date.getFullYear() + '/' + (date.getMonth() + 1) + '/01');
-    let monthFirstDateDay = first.getDay();
-    let weekCount = Math.ceil((selectedDayOfMonth + monthFirstDateDay) / 7);
-    // console.log(date.getFullYear() + '/' + (date.getMonth() + 1) + '/01');
-    // console.log('selectedDayOfMonth : ', selectedDayOfMonth);
-    // console.log('first : ', first);
-    // console.log('monthFirstDateDay : ', monthFirstDateDay);
-    // console.log('weekCount : ', weekCount);
   },
   components: {
     appInput: Input,
@@ -76,34 +69,45 @@ export default {
     todayCard: TodayCard
   },
   mounted() {
+    // 초기 화면 설정
     this.getDayContent();
   },
   methods: {
     openDialog() {
+      // 다이얼로그 창을 열기 위한 이벤트 발생
       this.$eventBus.$emit('dialogOpen');
     },
     getDayContent() {
       let _this = this;
-      axios.get('https://dayback-163404.firebaseio.com/dayback.json')
+      // 사용자가 입력한 글 목록을 가져오기 위한 통신
+      // request headers에 토큰 값 설정해서 요청
+      axios.get('https://dayback.hcatpr.com/post/', {
+            headers: {
+              'Authorization': 'token ' + _this.sharedState.token
+            }
+          })
            .then(function(response) {
-             if (response.status === 200 && response.statusText === 'OK') {
-               _this.dailyData = [];
-               for (let key in response.data) {
-                 let data = {};
-                 data.id = key;
-                 data.value = response.data[key];
-                 _this.dailyData.push(data);
+             if (response.status === 200) {
+               // 서서버로부터 받아온 글 목록 데이터에 설정
+               _this.dailyData = response.data.results;
+               // 저장된 데이터가 없을 경우의 처리
+               if (_this.dailyData.length === 0) {
+                 window.alert('입력한 글이 없습니다.');
                }
+             }
+             else {
+               window.alert('글 목록을 가져오는데 실패했습니다.');
              }
            })
            .catch(function(error) {
+             // 글 목록 가져오는 것이 실패했을 경우의 처리
+             window.alert('서버 통신에 실패했습니다.\n원인 : ' + error.message);
              console.error(error.message);
            });
     }
   },
   computed: {
     date() {
-      // 리턴 형식 nth
       return new Date().getDate();
     },
     day() {
