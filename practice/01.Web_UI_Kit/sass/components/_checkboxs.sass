@@ -1,0 +1,43 @@
+// checkbox 기본 설정 값
+%default-checkbox-style
+  display: inline-block
+  width: 20px
+  height: 20px
+  margin: em(10px) em(13px)
+  border: 2px solid #ddd3d0
+  border-radius: 6px
+  cursor: pointer
+
+input[type='checkbox']
+  display: none
+
+// map 변수에 설정한 값을 사용해 클래스 생성 및 값 설정
+@each $name, $color in $color-map
+  .checkbox--#{$name}
+    @extend %default-checkbox-style
+    position: relative
+    & span
+      display: inline-block
+      @extend %ir-indent
+
+    +setting-border($color)
+    // is-hover, is-active 제거 가능.
+    &.is-hover,
+    &.is-active,
+    &:hover,
+    &:active
+      &::after
+        position: absolute
+        top: 0
+        left: 3px
+        content: '\2714'
+        font-size: 14px
+    // 보여주기 위한 부분 - 실제 사용 부분에서는 제거.
+    &.is-hover
+      &::after
+        color: tint($color, 50%)
+      border-color: tint($color, 50%)
+    &.is-active
+      &::after
+        color: $color
+      border-color: $color

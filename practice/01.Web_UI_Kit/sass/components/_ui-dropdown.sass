@@ -1,5 +1,8 @@
 // UI - dropdown
 // 모양, 색, 글자 크기, 크기
+$font-size: 14px
+
+// dropdown 기본 설정 값
 %default-ul-style
   +border-radius(3px)
   list-style: none
@@ -8,8 +11,9 @@
     +border-radius(3px)
 
   & a
-    padding: 0 em(14px)
+    padding: 0 em(14px, $font-size)
     font-weight: bold
+    font-size: $font-size
     color: $text-color
 
 .dropdown
@@ -25,7 +29,7 @@
         position: relative
         width: 150px
         height: 50px
-        line-height: 3
+        line-height: 3.5
         // after remove
         &:not(.is-folded)
           display: none

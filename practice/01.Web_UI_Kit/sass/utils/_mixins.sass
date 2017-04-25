@@ -1,7 +1,11 @@
+// border 설정을 위한 mixin
+// 기본 값 : bottom
 =border-shadow($direction: 'bottom')
   border: none
   border-#{$direction}: 2px solid rgba(0, 0, 0, 0.2)
 
+// border radius 속성 설정을 위한 mixin
+// 전달받은 인자값의 길이에 따라 값을 설정
 =border-radius($radius)
   @if length($radius) == 1
     border-radius: nth($radius, 1)
@@ -12,6 +16,8 @@
   @else
     border-radius: nth($radius, 1) nth($radius, 2) nth($radius, 3) nth($radius, 4)
 
+// background 속성 설정을 위한 mixin
+// background 색에 따라 hover, active 상태의 색상도 함께 설정
 =setting-background($color)
   background: $color
   &:hover
@@ -20,3 +26,17 @@
     +border-shadow('top')
     box-shadow: none
     background: shade($color, 20%)
+
+// border color 속성 설정을 위한 mixin
+// hover, active 상태의 색상 설정
+=setting-border($color)
+  &:hover
+    $border-color: tint($color, 20%)
+    border-color: $border-color
+    &::after
+      color: $border-color
+
+  &:active
+    border-color: $color
+    &::after
+      color: $color
