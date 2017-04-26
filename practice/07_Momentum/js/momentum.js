@@ -74,7 +74,7 @@ var addListItem = function(input_text) {
   list_item.appendChild(delete_btn);
 
   list.appendChild(list_item);
-
+  
   item_check.onchange = function() {
     if (this.checked) {
       addClass(this.parentNode, 'is-check');
