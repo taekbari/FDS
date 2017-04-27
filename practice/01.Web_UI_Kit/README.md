@@ -8,7 +8,7 @@
 
 > Select 요소에 포함되는 option 요소의 스타일링이 어렵기 때문에, Dropdown menu 로 작업 진행함.  
 
-### 작업 진행 상황  
+### 작업 진행 내용  
 
 * Button, Select, Checkbox 요소 작업 완료.  
 * Dropdown의 경우 `<li>`요소와 `<a>`요소를 사용.
