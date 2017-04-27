@@ -31,3 +31,6 @@
 * 카드 이미지를 분할하여 사용할 경우 이미지 요청 request가 증가하기 때문에, `sprite`기법 사용.  
 * 아이콘과 버튼 같은 자주 쓰는 이미지들을 한 이미지로 통합해 사용.  
 * `background-position` 값을 이용해 사용.  
+
+#### 페이지 링크  
+* https://taekbari.github.io/FDS/practice/06_Transform3D/  

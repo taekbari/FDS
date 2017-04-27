@@ -26,3 +26,6 @@ Responsive Web Page 만들어 보는 연습.
   /* 백그라운드 관련 속성 */
 }
 ```  
+
+#### 페이지 링크  
+* https://taekbari.github.io/FDS/practice/02_RWD/  

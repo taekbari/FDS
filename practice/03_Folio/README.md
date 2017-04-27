@@ -29,4 +29,7 @@
 ### 공부해야하는 부분  
 
 * `position` 설정에 따른 `z-index` 변화.  
-* 유연한 이미지 사용법. (이미지 제단 등.)
+* 유연한 이미지 사용법. (이미지 제단 등.)  
+
+#### 페이지 링크  
+* https://taekbari.github.io/FDS/practice/03_Folio/  

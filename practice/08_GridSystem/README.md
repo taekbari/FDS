@@ -24,3 +24,6 @@
 > `omega` : 오른쪽 `gutter`를 없애는 역할  
 
 * `pull`과 `push` 클래스를 사용해서 마크업 상의 순서와 보여지는 화면에서의 순서를 조절할 수 있다는 것이 유용함.  
+
+#### 페이지 링크  
+* https://taekbari.github.io/FDS/practice/08_GridSystem/  

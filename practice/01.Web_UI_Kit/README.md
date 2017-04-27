@@ -22,4 +22,7 @@
 #### 주의사항  
 
 * `sass`에서 제공하는 `darken`과 `lighten` 함수 사용시 원하는 결과를 얻지 못하는 문제가 있다. 색의 비율을 감소 또는 증가시킬 때, 점진적으로 색이 변화하는 것이 아니라, 순식간에 색이 흰 색 또는 검은 색으로 변하게 된다. 이를 방지하기 위해 `mix()` 함수를 사용하여 처리하는 것이 좋다.  
-> 이와 같은 현상을 정리한 예제 - http://codepen.io/KatieK2/pen/tejhz/
+> 이와 같은 현상을 정리한 예제 - http://codepen.io/KatieK2/pen/tejhz/  
+
+#### 페이지 링크  
+* https://taekbari.github.io/FDS/practice/01.Web_UI_Kit/  

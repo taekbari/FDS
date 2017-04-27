@@ -34,4 +34,7 @@
 #### 참고  
 
 * https://www.w3.org/WAI/tutorials/tables/  
-* http://html5ref.clearboth.org/doku.php?id=html5:attribute:scope
+* http://html5ref.clearboth.org/doku.php?id=html5:attribute:scope  
+
+#### 페이지 링크  
+* https://taekbari.github.io/FDS/practice/05_TableDesign/  

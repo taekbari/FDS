@@ -74,3 +74,6 @@ todo_btn.onclick = function() {
 * `input` 요소 종류 중 `search` 사용했을 때, 높이 설정 안되는 문제.  
 > `appearance` 속성을 제거해줘야 원하는 대로 스타일링이 가능했다.  
 > `appearance` : 운영체제 및 브라우저에 기본적으로 설정되어 있는 테마를 기반으로 요소를 표현하는 속성.  
+
+#### 페이지 링크  
+* https://taekbari.github.io/FDS/practice/07_Momentum/  
