@@ -1,0 +1,58 @@
+
+$container-width: 960px
+$column-count: 12
+
+@function column-width($num, $width: 60px, $gutter: 20px)
+  @return ($width * $num) + ($gutter * ($num - 1))
+
+@function pull-position($num, $width: 60px, $gutter: 20px)
+  @return ($width + $gutter) * $num
+
+@function prefix-width($num, $width: 60px, $gutter: 20px)
+  @return ($width + $gutter) * $num
+
+// container module
+.container
+  width: $container-width
+  margin: 0 auto
+  background: #eee
+
+// row module
+.row::after
+  content: ''
+  display: block
+  clear: both
+
+[class*='col-']
+  float: left
+  margin-left: 10px
+  margin-right: 10px
+
+[class*='push-'],
+[class*='pull-']
+  position: relative
+  top: 0
+
+.alpha
+  margin-left: 0
+
+.omega
+  margin-right: 0
+
+@for $i from 1 through $column-count
+  $position: pull-position($i)
+
+  .col-#{$i}
+    width: column-width($i)
+
+  .push-#{$i}
+    left: $position
+
+  .pull-#{$i}
+    right: $position
+
+  .prefix-#{$i}
+    padding-left: prefix-width($i)
+
+  .suffix-#{$i}
+    padding-right: prefix-width($i)
