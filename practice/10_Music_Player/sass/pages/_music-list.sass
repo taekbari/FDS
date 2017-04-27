@@ -9,6 +9,7 @@
   bottom: 0
   width: 600px
   border-radius: 8px
+  z-index: 2
   transform: translateX(-100%)
   transition: transform 0.5s ease-out
   background: #eee
@@ -46,7 +47,8 @@
           color: #252120
         & p
           color: #655f5e
-      &.is-active
+      &.is-active,
+      &:active
         background: #e1e1e1
   &-item
     display: flex

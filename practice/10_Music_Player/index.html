@@ -24,13 +24,15 @@
         </figure>
         <div class="music-play__control">
           <div class="music-play__control-button">
-            <button type="button"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
-            <button type="button"><i class="fa fa-play" aria-hidden="true"></i></button>
-            <button type="button"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
+            <button class="music-play__control-button-backward" type="button"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
+            <button class="music-play__control-button-play" type="button"><i class="fa fa-play" aria-hidden="true"></i></button>
+            <button class="music-play__control-button-forward" type="button"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
           </div>
           <div class="music-play__control-seekbar">
             <span class="music-play__control-seekbar__current-time">00:00</span>
             <div class="music-play__control-seekbar__progress">
+              <div class="music-play__control-seekbar__progress--bar"></div>
+              <div class="music-play__control-seekbar__progress--circle"></div>
             </div>
             <span class="music-play__control-seekbar__total-time">03:00</span>
           </div>
@@ -92,5 +94,6 @@
     </ul>
     <button class="music-container__close-btn" type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
   </div>
+  <script src="./js/player.js"></script>
 </body>
 </html>

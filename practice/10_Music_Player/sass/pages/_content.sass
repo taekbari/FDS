@@ -3,16 +3,22 @@ main
   width: 100%
   height: 100vh
   background: rgba(#ddd, 0.4)
+  &:before
+    position: absolute
+    top: 0
+    left: 0
+    content: ''
+    width: 100%
+    height: 100%
+    opacity: 0
+    z-index: -1
+    background: rgba(0, 0, 0, 0.4)
+    transition: opacity 0.5s ease-out
 
   &.is-show
-    &::after
-      position: absolute
-      top: 0
-      left: 0
-      content: ''
-      width: 100%
-      height: 100%
-      background: rgba(0, 0, 0, 0.2)
+    &::before
+      opacity: 1
+      z-index: 1
 
 .music-list-btn
   position: absolute
@@ -90,23 +96,34 @@ main
       &__progress
         position: relative
         flex: 0 1 80%
-        height: 2px
+        height: 15px
         margin: 0 5px
-        background: #eee
+        cursor: pointer
 
         &::before
           position: absolute
-          top: -4px
-          left: 10%
+          top: 7.5px
+          left: 0
+          width: 100%
+          height: 2px
+          content: ''
+          background: #eee
+
+        &--circle
+          position: absolute
+          top: 3.5px
+          left: 0
           width: 10px
           height: 10px
           border-radius: 50%
           content: ''
           background: skyblue
-        &::after
+          transform: translateX(-50%)
+        &--bar
           position: absolute
-          width: 10%
-          height: 100%
+          top: 7.5px
+          width: 0%
+          height: 2px
           content: ''
           background: skyblue
 

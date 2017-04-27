@@ -1,31 +1,3 @@
-// Audio Object
-var AudioCtrl = (function(global){
-  'use strict';
-
-  var audio, audio_src;
-
-  function validate(condi) {
-
-  }
-  function _AudioCtrl(source) {
-    audio = document.createElement('audio');
-
-  }
-}(window));
-
-function AudioCtrl(source) {
-  'use strict';
-
-  var audio, audio_src;
-
-  audio = document.createElement('audio');
-
-}
-
-AudioCtrl.validate = function() {
-
-};
-
 // 필요한 동작
 // 리스트 보여주는 버튼,
 // 리스스 닫는 버튼
